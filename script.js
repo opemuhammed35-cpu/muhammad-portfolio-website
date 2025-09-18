@@ -27,10 +27,10 @@ const texts = [
   "Problem Solver"
 ];
 
-let i = 0;   // phrase index
-let j = 0;   // character index
+let i = 0;
+let j = 0;
 let isDeleting = false;
-const speed = 100; // typing speed in ms
+const speed = 100;
 const typingDiv = document.getElementById("typing");
 
 function type() {
@@ -40,14 +40,14 @@ function type() {
     typingDiv.textContent = currentText.slice(0, j++);
     if (j > currentText.length) {
       isDeleting = true;
-      setTimeout(type, 1200); // pause before deleting
+      setTimeout(type, 1200);
       return;
     }
   } else {
     typingDiv.textContent = currentText.slice(0, j--);
     if (j < 0) {
       isDeleting = false;
-      i = (i + 1) % texts.length; // next phrase
+      i = (i + 1) % texts.length;
     }
   }
 
@@ -72,3 +72,21 @@ backToTop.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+// ------------------ Visitor Counter ------------------
+// Using localStorage for demo (replace with server API in production)
+const visitorDisplay = document.getElementById("visitorCount");
+let count = parseInt(localStorage.getItem("visitorCount") || "0");
+count += 1;
+localStorage.setItem("visitorCount", count);
+
+// Animate counter
+let displayCount = 0;
+const animateCounter = () => {
+  const interval = setInterval(() => {
+    displayCount += 1;
+    visitorDisplay.textContent = displayCount;
+    if (displayCount >= count) clearInterval(interval);
+  }, Math.floor(2000 / count));
+};
+animateCounter();
