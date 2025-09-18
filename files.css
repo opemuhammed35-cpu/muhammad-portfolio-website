@@ -16,13 +16,20 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  flex-wrap: wrap;
 }
 header h1 { 
   color: #00ffcc; 
-  margin: 0; 
+  margin: 0 0 10px 0;
+  flex: 1 1 100%;
+  text-align: center;
+}
+header nav { 
+  flex: 1 1 100%; 
+  text-align: center;
 }
 header nav a { 
-  margin-left: 20px; 
+  margin: 0 10px; 
   color: #fff; 
   text-decoration: none; 
   font-weight: 500; 
@@ -33,19 +40,20 @@ header nav a:hover {
 
 /* Hero Section */
 .hero { 
-  padding: 100px 40px; 
+  padding: 80px 20px; 
   background: linear-gradient(135deg,#0f0c29,#302b63,#24243e); 
 }
 .hero-content { 
   display: flex; 
   flex-wrap: wrap; 
   align-items: center; 
-  justify-content: space-between; 
+  justify-content: center; 
   gap: 20px; 
 }
 .hero-text { 
-  flex: 1 1 400px; 
+  flex: 1 1 300px; 
   font-size: 18px; 
+  text-align: center;
 }
 .hero-text .typing { 
   font-size: 28px; 
@@ -54,12 +62,15 @@ header nav a:hover {
   white-space: nowrap; 
   overflow: hidden; 
   animation: blinkCursor 0.8s step-end infinite; 
-  margin-bottom: 10px; 
+  margin-bottom: 15px; 
 }
 .hero-image img { 
-  width: 250px; 
+  width: 200px; 
+  height: 200px; 
   border-radius: 50%; 
   border: 4px solid #00ffcc; 
+  margin: 0 auto;
+  display: block;
 }
 
 /* Buttons */
@@ -79,37 +90,38 @@ header nav a:hover {
 
 /* About Section */
 .about { 
-  padding: 80px 40px; 
+  padding: 60px 20px; 
   background: #111; 
   border-radius: 15px; 
-  margin: 40px; 
+  margin: 20px; 
 }
 .about-container { 
   display: flex; 
   flex-wrap: wrap; 
   gap: 20px; 
   align-items: center; 
+  justify-content: center;
 }
 .about-text { 
-  flex: 1 1 400px; 
+  flex: 1 1 300px; 
   font-size: 16px; 
+  text-align: center;
 }
 .about-text .values span { 
   display: inline-block; 
-  margin-right: 10px; 
+  margin: 5px; 
   padding: 5px 12px; 
   background: #00ffcc; 
   color: #000; 
   border-radius: 8px; 
-  margin-top: 10px; 
 }
 
 /* Skills Section */
 .skills { 
-  padding: 80px 40px; 
+  padding: 60px 20px; 
   background: #222; 
   border-radius: 15px; 
-  margin: 40px; 
+  margin: 20px; 
 }
 .filter-buttons { 
   text-align: center; 
@@ -134,11 +146,11 @@ header nav a:hover {
   display: flex; 
   flex-wrap: wrap; 
   justify-content: center; 
-  gap: 20px; 
+  gap: 15px; 
 }
 .skill { 
-  width: 100px; 
-  height: 100px; 
+  width: 80px; 
+  height: 80px; 
   display: flex; 
   align-items: center; 
   justify-content: center; 
@@ -158,32 +170,32 @@ header nav a:hover {
 /* Visitor Counter */
 .visitor-section { 
   text-align: center; 
-  padding: 60px 0; 
+  padding: 40px 20px; 
 }
 .visitor-counter { 
   font-family: 'Orbitron', sans-serif; 
-  font-size: 50px; 
+  font-size: 40px; 
   color: #00ffcc; 
-  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc; 
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; 
 }
 
 /* Contact Section */
 footer { 
-  padding: 60px 40px; 
+  padding: 40px 20px; 
   background: #111; 
   text-align: center; 
   border-radius: 15px; 
-  margin: 40px; 
+  margin: 20px; 
 }
 .contact-container { 
   display: flex; 
   flex-wrap: wrap; 
-  gap: 30px; 
+  gap: 20px; 
   justify-content: center; 
-  margin-bottom: 30px; 
 }
 .contact-info, .contact-form { 
-  flex: 1 1 300px; 
+  flex: 1 1 250px; 
+  text-align: center;
 }
 .contact-info a { 
   color: #00ffcc; 
@@ -233,13 +245,46 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .hero-content, .about-container, .contact-container { 
-    flex-direction: column; 
-    text-align: center; 
+@media (max-width: 992px) {
+  .hero-text, .about-text, .contact-info, .contact-form {
+    text-align: center;
   }
-  .hero-image img, .prof img { 
-    width: 200px; 
-    height: 200px; 
+}
+
+@media (max-width: 768px) {
+  .hero-content, .about-container, .contact-container {
+    flex-direction: column;
+  }
+  .hero-image img, .prof img {
+    width: 180px;
+    height: 180px;
+  }
+  .skill {
+    width: 70px;
+    height: 70px;
+  }
+  .visitor-counter {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 480px) {
+  header nav a {
+    margin: 5px;
+    display: inline-block;
+  }
+  .hero-text {
+    font-size: 16px;
+  }
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  .skill {
+    width: 60px;
+    height: 60px;
+  }
+  .visitor-counter {
+    font-size: 28px;
   }
 }
