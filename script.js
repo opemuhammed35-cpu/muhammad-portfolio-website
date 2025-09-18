@@ -1,50 +1,72 @@
-// Typing Effect
+// =======================
+// Typing Effect in Hero
+// =======================
 const typingElement = document.getElementById("typing");
-const textArray = ["Web Developer", "Software Engineer", "UI/UX Designer"];
-let textIndex = 0;
+const typingTexts = [
+  "Software Engineer 💻",
+  "Web & App Developer 🌍",
+  "UI/UX Designer 🎨"
+];
+
+let typingIndex = 0;
 let charIndex = 0;
+let currentText = "";
+let isDeleting = false;
 
 function type() {
-  if (charIndex < textArray[textIndex].length) {
-    typingElement.textContent += textArray[textIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(type, 100);
+  if (typingIndex >= typingTexts.length) typingIndex = 0;
+  currentText = typingTexts[typingIndex];
+
+  if (isDeleting) {
+    typingElement.textContent = currentText.substring(0, charIndex--);
   } else {
-    setTimeout(erase, 1500);
+    typingElement.textContent = currentText.substring(0, charIndex++);
   }
-}
 
-function erase() {
-  if (charIndex > 0) {
-    typingElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
-    charIndex--;
-    setTimeout(erase, 50);
-  } else {
-    textIndex = (textIndex + 1) % textArray.length;
-    setTimeout(type, 500);
+  if (!isDeleting && charIndex === currentText.length) {
+    isDeleting = true;
+    setTimeout(type, 1500); // pause before deleting
+    return;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    typingIndex++;
   }
+
+  setTimeout(type, isDeleting ? 50 : 100);
 }
+type();
 
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(type, 500);
-});
-
+// =======================
 // Back to Top Button
-const backToTop = document.getElementById("backToTop");
-backToTop.addEventListener("click", () => {
+// =======================
+const backToTopBtn = document.getElementById("backToTop");
+
+window.onscroll = function () {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+};
+
+backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// =======================
 // Skills Filter
+// =======================
 const filterButtons = document.querySelectorAll(".filter-buttons button");
 const skills = document.querySelectorAll(".skill");
 
 filterButtons.forEach(button => {
   button.addEventListener("click", () => {
+    // Remove active state
     filterButtons.forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
 
     const filter = button.getAttribute("data-filter");
+
     skills.forEach(skill => {
       if (filter === "all" || skill.classList.contains(filter)) {
         skill.style.display = "block";
@@ -55,8 +77,13 @@ filterButtons.forEach(button => {
   });
 });
 
-// Contact Form (demo only)
-document.querySelector(".contact-form form").addEventListener("submit", (e) => {
+// =======================
+// Contact Form Handler (basic)
+// =======================
+const form = document.querySelector(".contact-form form");
+
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  alert("Thank you! Your message has been sent.");
+  alert("Thanks for reaching out! I’ll reply soon.");
+  form.reset();
 });
