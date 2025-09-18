@@ -51,6 +51,12 @@ header nav a:hover {
     border-color: transparent;
   }
 }
+.b1{
+padding: 10px;
+  background-color: blue;
+  font-size: 20px;
+  border-radius: 10px;
+}
 
 /* Hero Container */
 .container {
@@ -259,3 +265,4 @@ input[type="submit"]:hover {
     height: 200px;
   }
 }
+
