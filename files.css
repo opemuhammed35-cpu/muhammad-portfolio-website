@@ -51,7 +51,7 @@ header nav a:hover {
     border-color: transparent;
   }
 }
-.b1{
+.b1 button{
 padding: 10px;
   background-color: blue;
   font-size: 20px;
@@ -265,4 +265,5 @@ input[type="submit"]:hover {
     height: 200px;
   }
 }
+
 
