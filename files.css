@@ -18,11 +18,7 @@ header {
   background: #111;
   padding: 15px 20px;
 }
-.b1 button {
-    padding: 10px;
-    background-color: blue;
-    border-radius: 10px;
-}
+
 header h1 {
   margin: 0;
   color: blue;
@@ -157,6 +153,21 @@ header nav a:hover {
 
 .hidden {
   display: none;
+}
+
+/* Visitor Counter */
+.visitor-counter {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 48px;
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+  letter-spacing: 2px;
+  margin: 20px 0;
+}
+
+.visitor-counter span {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Contact */
