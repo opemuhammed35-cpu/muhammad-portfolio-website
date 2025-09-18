@@ -27,10 +27,10 @@ const texts = [
   "Problem Solver"
 ];
 
-let i = 0;
-let j = 0;
+let i = 0; // phrase index
+let j = 0; // character index
 let isDeleting = false;
-const speed = 100;
+const speed = 100; // typing speed in ms
 const typingDiv = document.getElementById("typing");
 
 function type() {
@@ -40,14 +40,14 @@ function type() {
     typingDiv.textContent = currentText.slice(0, j++);
     if (j > currentText.length) {
       isDeleting = true;
-      setTimeout(type, 1200);
+      setTimeout(type, 1200); // pause before deleting
       return;
     }
   } else {
     typingDiv.textContent = currentText.slice(0, j--);
     if (j < 0) {
       isDeleting = false;
-      i = (i + 1) % texts.length;
+      i = (i + 1) % texts.length; // next phrase
     }
   }
 
@@ -74,19 +74,13 @@ backToTop.addEventListener("click", () => {
 });
 
 // ------------------ Visitor Counter ------------------
-// Using localStorage for demo (replace with server API in production)
-const visitorDisplay = document.getElementById("visitorCount");
-let count = parseInt(localStorage.getItem("visitorCount") || "0");
-count += 1;
-localStorage.setItem("visitorCount", count);
+const visitorCount = document.getElementById("visitorCount");
 
-// Animate counter
-let displayCount = 0;
-const animateCounter = () => {
-  const interval = setInterval(() => {
-    displayCount += 1;
-    visitorDisplay.textContent = displayCount;
-    if (displayCount >= count) clearInterval(interval);
-  }, Math.floor(2000 / count));
-};
-animateCounter();
+// For demo purposes, use localStorage to simulate visits
+let count = localStorage.getItem("visitCount");
+if (!count) {
+  count = 0;
+}
+count++;
+localStorage.setItem("visitCount", count);
+visitorCount.textContent = count;
