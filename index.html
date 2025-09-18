@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
 
-  <!-- Google Fonts for digital counter -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="files.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header -->
@@ -23,64 +23,53 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="s1">
-    <div class="typing" id="typing"></div>
-    <div class="container">
-      <div class="text">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="typing" id="typing"></div>
         <p>
-          I like to craft solid and scalable frontend and backend products with great user experience. <br><br>
-          Highly skilled at progressive enhancement, design systems & UI Engineering. <br><br>
-          Proven experience building successful products for clients across several countries.
+          Crafting beautiful and functional web & mobile applications. Passionate about UI/UX design, clean code, and problem solving.
         </p>
-        <div class="b1">
-          <a href="#contact"><button>Contact Me</button></a>
-        </div>
+        <a href="#contact"><button class="btn-primary">Contact Me</button></a>
       </div>
-
-      <div class="border"></div>
-
-      <div class="image">
-        
+      <div class="hero-image">
+        <img src="my-images/prof-2.png" alt="Profile">
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section>
-    <h3 id="about">About Me</h3>
-    <div class="abt">
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <div class="about-container">
       <div class="prof">
-        <img src="my-images/prof-2.png" alt="profile">
+        <img src="my-images/prof-2.png" alt="Profile">
       </div>
-      <div>
-        <p class="who-1">Who am I</p>
-        <p class="who">
-          I'm a passionate web developer with 3+ years of experience creating modern, responsive websites and applications. My journey in tech started when I built my first website at 16, and I've been hooked ever since.
-          <br><br>
-          I specialize in frontend development with React and Vue.js, but I'm also comfortable working with backend technologies like Node.js and Express. I believe in writing clean, maintainable code and creating intuitive user experiences.
+      <div class="about-text">
+        <p>
+          I'm a web developer with 3+ years of experience building modern, responsive websites and applications.
+          Skilled in frontend frameworks like React and Vue.js and backend technologies like Node.js and Express.
         </p>
+        <p>
+          I believe in clean code, great design, and continuous learning to deliver the best experience to users.
+        </p>
+        <div class="values">
+          <span>User Experience</span>
+          <span>Accessibility</span>
+          <span>Continuous Learning</span>
+        </div>
       </div>
-    </div>
-
-    <p class="values">My Values</p>
-    <div class="v1">
-      <p>User Experience</p>
-      <p>Accessibility</p>
-      <p>Continuous Learning</p>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section class="s3">
-    <h4 id="skills">My Skills</h4>
-    <p class="skillset">I've honed my skills in the following languages and tools.</p>
-
+  <section class="skills" id="skills">
+    <h2>My Skills</h2>
     <div class="filter-buttons">
       <button class="active" data-filter="all">All</button>
       <button data-filter="frontend">Frontend</button>
       <button data-filter="backend">Backend</button>
     </div>
-
     <div class="skills-container">
       <!-- Frontend -->
       <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
@@ -97,49 +86,33 @@
   </section>
 
   <!-- Visitor Counter -->
-  <section style="text-align:center; margin-top:30px;">
-    <h3>Total Visitors:</h3>
+  <section class="visitor-section">
+    <h3>Total Visitors</h3>
     <p class="visitor-counter" id="visitorCount">0</p>
   </section>
 
-  <!-- Footer -->
-  <footer id="foot">
-    <h5 id="contact">Contact Me</h5>
+  <!-- Contact Section -->
+  <footer id="contact">
+    <h2>Contact Me</h2>
     <div class="contact-container">
       <div class="contact-info">
-        <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
-        <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
-        <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+        <p>Email: <a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+        <p>Phone: <a href="tel:+2348140295116">+2348140295116</a></p>
+        <p>Address: NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
       </div>
-
       <div class="contact-form">
         <form>
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Full name">
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Your email">
-
-          <label for="message">Message</label>
-          <textarea id="message" rows="5" placeholder="Message..."></textarea>
-
-          <input type="submit" value="Send Message">
+          <input type="text" id="name" placeholder="Full Name" required>
+          <input type="email" id="email" placeholder="Your Email" required>
+          <textarea id="message" rows="5" placeholder="Message..." required></textarea>
+          <input type="submit" value="Send Message" class="btn-primary">
         </form>
       </div>
     </div>
-
     <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-    </nav>
-
     <button id="backToTop">⬆ Top</button>
   </footer>
 
-  <!-- External Script -->
   <script src="script.js"></script>
 </body>
 </html>
-
