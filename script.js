@@ -8,7 +8,6 @@ buttons.forEach(button => {
     button.classList.add("active");
 
     const filter = button.getAttribute("data-filter");
-
     skills.forEach(skill => {
       if (filter === "all" || skill.classList.contains(filter)) {
         skill.classList.remove("hidden");
@@ -26,61 +25,43 @@ const texts = [
   "UI/UX Designer",
   "Problem Solver"
 ];
-
-let i = 0; // phrase index
-let j = 0; // character index
+let i = 0, j = 0;
 let isDeleting = false;
-const speed = 100; // typing speed in ms
+const speed = 100;
 const typingDiv = document.getElementById("typing");
 
 function type() {
   const currentText = texts[i];
-
   if (!isDeleting) {
     typingDiv.textContent = currentText.slice(0, j++);
     if (j > currentText.length) {
       isDeleting = true;
-      setTimeout(type, 1200); // pause before deleting
+      setTimeout(type, 1200);
       return;
     }
   } else {
     typingDiv.textContent = currentText.slice(0, j--);
     if (j < 0) {
       isDeleting = false;
-      i = (i + 1) % texts.length; // next phrase
+      i = (i + 1) % texts.length;
     }
   }
-
   setTimeout(type, isDeleting ? speed / 2 : speed);
 }
 type();
 
 // ------------------ Back To Top Button ------------------
 const backToTop = document.getElementById("backToTop");
-
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
+  backToTop.style.display = window.scrollY > 300 ? "block" : "none";
 });
-
 backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // ------------------ Visitor Counter ------------------
 const visitorCount = document.getElementById("visitorCount");
-
-// For demo purposes, use localStorage to simulate visits
-let count = localStorage.getItem("visitCount");
-if (!count) {
-  count = 0;
-}
+let count = localStorage.getItem("visitCount") || 0;
 count++;
 localStorage.setItem("visitCount", count);
 visitorCount.textContent = count;
