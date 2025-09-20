@@ -1,89 +1,82 @@
-// =======================
-// Typing Effect in Hero
-// =======================
-const typingElement = document.getElementById("typing");
-const typingTexts = [
-  "Software Engineer 💻",
-  "Web & App Developer 🌍",
-  "UI/UX Designer 🎨"
-];
-
-let typingIndex = 0;
-let charIndex = 0;
-let currentText = "";
-let isDeleting = false;
-
-function type() {
-  if (typingIndex >= typingTexts.length) typingIndex = 0;
-  currentText = typingTexts[typingIndex];
-
-  if (isDeleting) {
-    typingElement.textContent = currentText.substring(0, charIndex--);
-  } else {
-    typingElement.textContent = currentText.substring(0, charIndex++);
-  }
-
-  if (!isDeleting && charIndex === currentText.length) {
-    isDeleting = true;
-    setTimeout(type, 1500); // pause before deleting
-    return;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    typingIndex++;
-  }
-
-  setTimeout(type, isDeleting ? 50 : 100);
-}
-type();
-
-// =======================
-// Back to Top Button
-// =======================
-const backToTopBtn = document.getElementById("backToTop");
-
-window.onscroll = function () {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    backToTopBtn.style.display = "block";
-  } else {
-    backToTopBtn.style.display = "none";
-  }
-};
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// =======================
-// Skills Filter
-// =======================
-const filterButtons = document.querySelectorAll(".filter-buttons button");
+// ------------------ Skill Filter ------------------
+const buttons = document.querySelectorAll(".filter-buttons button");
 const skills = document.querySelectorAll(".skill");
 
-filterButtons.forEach(button => {
+buttons.forEach(button => {
   button.addEventListener("click", () => {
-    // Remove active state
-    filterButtons.forEach(btn => btn.classList.remove("active"));
+    buttons.forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
 
     const filter = button.getAttribute("data-filter");
 
     skills.forEach(skill => {
       if (filter === "all" || skill.classList.contains(filter)) {
-        skill.style.display = "block";
+        skill.classList.remove("hidden");
       } else {
-        skill.style.display = "none";
+        skill.classList.add("hidden");
       }
     });
   });
 });
 
-// =======================
-// Contact Form Handler (basic)
-// =======================
-const form = document.querySelector(".contact-form form");
+// ------------------ Typing Effect ------------------
+const texts = [
+  "Software Engineer",
+  "Web & App Developer",
+  "UI/UX Designer",
+  "Problem Solver"
+];
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Thanks for reaching out! I’ll reply soon.");
-  form.reset();
+let i = 0;   // phrase index
+let j = 0;   // character index
+let isDeleting = false;
+const speed = 100; // typing speed in ms
+const typingDiv = document.getElementById("typing");
+
+function type() {
+  const currentText = texts[i];
+
+  if (!isDeleting) {
+    typingDiv.textContent = currentText.slice(0, j++);
+    if (j > currentText.length) {
+      isDeleting = true;
+      setTimeout(type, 1200); // pause before deleting
+      return;
+    }
+  } else {
+    typingDiv.textContent = currentText.slice(0, j--);
+    if (j < 0) {
+      isDeleting = false;
+      i = (i + 1) % texts.length; // move to next phrase
+    }
+  }
+
+  setTimeout(type, isDeleting ? speed / 2 : speed);
+}
+type();
+
+// ------------------ Back To Top Button ------------------
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// ------------------ Hamburger Menu ------------------
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
 });
