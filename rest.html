@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Lover</title>
+  <link rel="stylesheet" href="rest.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">🍳 Food Lover</div>
+
+      <!-- Hamburger Button -->
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-text">
+      <h1>Contact Us For Best Breakfast</h1>
+      <p>Start your day the right way with our hearty breakfast plates, sizzling hot coffee, and freshly baked treats. Whether you’re on the go or craving a cozy sit-down meal, we’ve got the flavors that feel like home.</p>
+      <a href="#cta" class="btn">Contact Us</a>
+    </div>
+    <div class="hero-img">
+      <img src="my-images/wafflesss.jpeg" alt="Breakfast">
+    </div>
+  </section>
+
+  <!-- Orange Wave Divider -->
+  <div class="wave wave-bottom"></div>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="about-img">
+      <img src="my-images/waffles.jpeg" alt="About food">
+    </div>
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>At Food Lover, we believe good food brings people together. Since opening our doors in 1998, we’ve been serving classic diner favorites made from fresh ingredients and a whole lot of love. From fluffy pancakes to juicy burgers, every meal is crafted to comfort and satisfy. Our cozy atmosphere, friendly service, and timeless recipes make us more than just a diner—we’re your neighborhood gathering place.</p>
+    </div>
+  </section>
+
+  <!-- Black Wave Divider -->
+  <div class="wave wave-top"></div>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="item">
+        <img src="my-images/italian.jpeg" alt="Dish 1">
+        <h3>Italian Sauce Mushroom</h3>
+        <p>$20.00</p>
+      </div>
+      <div class="item">
+        <img src="my-images/combo.jpeg" alt="Dish 2">
+        <h3>Breakfast Combo</h3>
+        <p>$15.00</p>
+      </div>
+      <div class="item">
+        <img src="my-images/pancakes.jpeg" alt="Dish 3">
+        <h3>Classic Pancakes</h3>
+        <p>$12.00</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orange Wave Divider -->
+  <div class="wave wave-bottom"></div>
+
+  <!-- CTA Section -->
+  <section id="cta" class="cta">
+    <h2>Enjoy Best Meal</h2>
+    <p>Join us for delicious meals, friendly service, and a cozy diner vibe.</p>
+    <a href="#" class="btn">Order Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Food Lover | All rights reserved</p>
+  </footer>
+
+  <!-- JavaScript for Hamburger -->
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>
