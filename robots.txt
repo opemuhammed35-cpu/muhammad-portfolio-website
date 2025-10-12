@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://kamaldeen-muhammad-sage.vercel.app/sitemap.xml
+Sitemap: https://kamaldeen-muhammad-sage.vercel.app/sitemap.txt
