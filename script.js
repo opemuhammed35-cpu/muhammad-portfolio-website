@@ -1,3 +1,6 @@
+/* ===== Your existing JS starts here ===== */
+/* (All your original code for hamburger menu, typing effect, skills filter, back-to-top, etc.) */
+
 // ===== Hamburger Menu =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -72,7 +75,9 @@ filterButtons.forEach(button => {
   });
 });
 
-// ===== Appwrite Contact Form =====
+/* ===== End of your original JS ===== */
+
+/* ===== Contact Form (Appwrite) - appended at the end ===== */
 const client = new Appwrite.Client()
   .setEndpoint('https://fra.cloud.appwrite.io/v1') // Your Appwrite endpoint
   .setProject('690f2da00003aede713b'); // Your project ID
