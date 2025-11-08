@@ -95,7 +95,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    await database.createDocument('YOUR_COLLECTION_ID', 'unique()', {
+    await database.createDocument('690f36bd0014b1e3edc7', 'unique()', {
       name: name,
       email: email,
       message: message
