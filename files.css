@@ -55,19 +55,22 @@ header h1 {
   cursor: pointer;
 }
 
-/* ===== Typing Effect ===== */
+/* ===== Typing Effect (Fixed Blinking Cursor) ===== */
 .typing {
   border-right: 2px solid #00ffcc;
   white-space: nowrap;
   overflow: hidden;
   width: fit-content;
-  animation: blinkCursor 0.8s step-end infinite;
   font-size: 30px;
   color: lightblue;
   margin: 20px 0;
+  animation: blinkCursor 0.7s step-end infinite;
 }
 
 @keyframes blinkCursor {
+  0%, 100% {
+    border-color: #00ffcc;
+  }
   50% {
     border-color: transparent;
   }
@@ -375,4 +378,4 @@ footer {
   .social-links a {
     font-size: 24px;
   }
-}
+  }
