@@ -308,6 +308,26 @@ footer {
   background-color: #555;
 }
 
+/* ===== Social Media Icons ===== */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  color: #00aaff; /* Theme color */
+  font-size: 28px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #00ffcc; /* Hover effect */
+  transform: scale(1.2);
+}
+
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .hamburger {
@@ -346,5 +366,13 @@ footer {
   .prof img {
     width: 200px;
     height: 200px;
+  }
+
+  .social-links {
+    gap: 15px;
+  }
+
+  .social-links a {
+    font-size: 24px;
   }
 }
