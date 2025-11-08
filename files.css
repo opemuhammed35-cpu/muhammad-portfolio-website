@@ -45,7 +45,6 @@ header h1 {
   color: #fff;
 }
 
-/* Hamburger Menu (Mobile) */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -55,7 +54,7 @@ header h1 {
   cursor: pointer;
 }
 
-/* ===== Typing Effect (Fixed Blinking Cursor) ===== */
+/* ===== Typing Effect ===== */
 .typing {
   border-right: 2px solid #00ffcc;
   white-space: nowrap;
@@ -291,7 +290,6 @@ footer {
   color: #aaa;
 }
 
-/* Back to top button */
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -321,13 +319,13 @@ footer {
 }
 
 .social-links a {
-  color: #00aaff; /* Theme color */
+  color: #00aaff; 
   font-size: 28px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #00ffcc; /* Hover effect */
+  color: #00ffcc; 
   transform: scale(1.2);
 }
 
@@ -378,4 +376,4 @@ footer {
   .social-links a {
     font-size: 24px;
   }
-  }
+}
