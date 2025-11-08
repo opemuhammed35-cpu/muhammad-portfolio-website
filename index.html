@@ -16,9 +16,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- Vercel Analytics -->
-  <script defer src="/_vercel/insights/script.js"></script>
-
   <!-- Stylesheet -->
   <link rel="stylesheet" href="files.css">
 
@@ -58,6 +55,7 @@
             <a href="view.html"><button>View My Work</button></a>
           </div>
         </div>
+
         <div class="image">
           <img src="my-images/prof-2.png" alt="profile">
         </div>
@@ -114,38 +112,35 @@
         <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
       </div>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h5>Contact Me</h5>
-      <div class="contact-container">
-        <div class="contact-info">
-          <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
-          <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
-          <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
-        </div>
-
-        <div class="contact-form">
-          <form id="contactForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Full name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Message..." required></textarea>
-
-            <input type="submit" value="Send Message">
-          </form>
-          <p id="formStatus"></p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
   <footer id="foot">
+    <h5 id="contact">Contact Me</h5>
+    <div class="contact-container">
+      <div class="contact-info">
+        <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+        <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
+        <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+      </div>
+
+      <div class="contact-form">
+        <form id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Full name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Message..." required></textarea>
+
+          <input type="submit" value="Send Message">
+        </form>
+        <p id="formStatus"></p>
+      </div>
+    </div>
+
     <!-- Social Media Links -->
     <div class="social-links">
       <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -164,7 +159,7 @@
     <button id="backToTop">⬆ Top</button>
   </footer>
 
-  <!-- Script -->
-  <script src="js/script.js"></script>
+  <!-- External Script -->
+  <script src="script.js"></script>
 </body>
 </html>
