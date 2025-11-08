@@ -80,3 +80,38 @@ const navLinks = document.querySelector(".nav-links");
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("show");
 });
+
+// ------------------ Appwrite Contact Form ------------------
+// Make sure you include Appwrite SDK in HTML:
+// <script src="https://cdn.jsdelivr.net/npm/appwrite@8.4.0/dist/appwrite.min.js"></script>
+
+const client = new appwrite.Client();
+client
+  .setEndpoint('https://fra.cloud.appwrite.io/v1') // API Endpoint
+  .setProject('690f2da00003aede713b');             // Project ID
+
+const functions = new appwrite.Functions(client);
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = form.name.value;
+  const email = form.email.value;
+  const message = form.message.value;
+
+  try {
+    await functions.createExecution('690f3436813097b72374', JSON.stringify({
+      name,
+      email,
+      message
+    }));
+
+    alert("Message sent successfully!");
+    form.reset();
+  } catch (error) {
+    console.error(error);
+    alert("Failed to send message. Try again.");
+  }
+});
