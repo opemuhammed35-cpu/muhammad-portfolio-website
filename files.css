@@ -208,46 +208,24 @@ header h1 {
 }
 
 /* ===== Services Section ===== */
-.services {
-  margin: 40px 20px;
+#services {
+  padding: 30px 20px;
+  background: #111;
+  margin: 30px 0;
+}
+
+#services h4 {
   text-align: center;
+  color: #00aaff;
+  margin-bottom: 20px;
 }
 
 .services-container {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
   gap: 15px;
-  padding: 20px 0;
+  overflow-x: auto;
   scroll-behavior: smooth;
-}
-
-.service-box {
-  flex: 0 0 250px;
-  min-width: 250px;
-  height: 200px;
-  background-color: #111;
-  color: #00aaff;
-  border: 2px solid #00aaff;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  padding: 10px;
-  text-align: center;
-}
-
-.service-box h5 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #00ffcc;
-}
-
-.service-box p {
-  font-size: 14px;
-  color: #ccc;
+  padding-bottom: 10px;
 }
 
 .services-container::-webkit-scrollbar {
@@ -255,27 +233,32 @@ header h1 {
 }
 
 .services-container::-webkit-scrollbar-thumb {
-  background: #00aaff;
-  border-radius: 4px;
-}
-
-/* ===== Projects Section ===== */
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.project {
-  background: #222;
-  padding: 15px;
+  background-color: #00aaff;
   border-radius: 10px;
-  color: white;
-  transition: transform 0.3s ease;
 }
 
-.project:hover {
-  transform: translateY(-5px);
+.service-box {
+  flex: 0 0 250px;
+  background: #222;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+}
+
+.service-box h5 {
+  margin-bottom: 10px;
+  color: #00aaff;
+}
+
+.service-box p {
+  font-size: 14px;
+  color: #ccc;
 }
 
 /* ===== Contact Section ===== */
@@ -370,13 +353,13 @@ footer {
 }
 
 .social-links a {
-  color: #00aaff; /* Theme color */
+  color: #00aaff;
   font-size: 28px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #00ffcc; /* Hover effect */
+  color: #00ffcc;
   transform: scale(1.2);
 }
 
@@ -428,15 +411,11 @@ footer {
     font-size: 24px;
   }
 
+  .service-box {
+    flex: 0 0 200px;
+  }
+
   .services-container {
     gap: 10px;
   }
-  .service-box { 
-    flex: 0 0 200px; 
-    min-width: 200px; 
-    height: 180px; 
-    font-size: 14px; 
   }
-  .service-box h5 { font-size: 16px; }
-  .service-box p { font-size: 12px; }
-}
