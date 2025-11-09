@@ -45,6 +45,7 @@ header h1 {
   color: #fff;
 }
 
+/* Hamburger Menu (Mobile) */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -60,16 +61,13 @@ header h1 {
   white-space: nowrap;
   overflow: hidden;
   width: fit-content;
+  animation: blinkCursor 0.8s step-end infinite;
   font-size: 30px;
   color: lightblue;
   margin: 20px 0;
-  animation: blinkCursor 0.7s step-end infinite;
 }
 
 @keyframes blinkCursor {
-  0%, 100% {
-    border-color: #00ffcc;
-  }
   50% {
     border-color: transparent;
   }
@@ -209,6 +207,58 @@ header h1 {
   display: none;
 }
 
+/* ===== Services Section ===== */
+.services {
+  margin: 40px 20px;
+  text-align: center;
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 20px 0;
+  scroll-behavior: smooth;
+}
+
+.service-box {
+  flex: 0 0 250px;
+  min-width: 250px;
+  height: 200px;
+  background-color: #111;
+  color: #00aaff;
+  border: 2px solid #00aaff;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.service-box h5 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #00ffcc;
+}
+
+.service-box p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.services-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.services-container::-webkit-scrollbar-thumb {
+  background: #00aaff;
+  border-radius: 4px;
+}
+
 /* ===== Projects Section ===== */
 .project-list {
   display: grid;
@@ -290,6 +340,7 @@ footer {
   color: #aaa;
 }
 
+/* Back to top button */
 #backToTop {
   position: fixed;
   bottom: 20px;
@@ -319,13 +370,13 @@ footer {
 }
 
 .social-links a {
-  color: #00aaff; 
+  color: #00aaff; /* Theme color */
   font-size: 28px;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #00ffcc; 
+  color: #00ffcc; /* Hover effect */
   transform: scale(1.2);
 }
 
@@ -376,4 +427,16 @@ footer {
   .social-links a {
     font-size: 24px;
   }
+
+  .services-container {
+    gap: 10px;
+  }
+  .service-box { 
+    flex: 0 0 200px; 
+    min-width: 200px; 
+    height: 180px; 
+    font-size: 14px; 
+  }
+  .service-box h5 { font-size: 16px; }
+  .service-box p { font-size: 12px; }
 }
