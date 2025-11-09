@@ -3,24 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Kamaldeen Muhammad | Portfolio</title>
-
-  <!-- Viewport for mobile responsiveness -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Portfolio of Kamaldeen Muhammad - Software Engineer, Web & App Developer, and UI/UX Designer. Explore my projects, skills, and contact information.">
+  <meta name="description" content="Portfolio of Kamaldeen Muhammad - Software Engineer, Web & App Developer, and UI/UX Designer.">
   <meta name="keywords" content="Kamaldeen Muhammad, portfolio, web developer, software engineer, UI UX designer, frontend, backend, Nigeria, fullstack">
   <meta name="author" content="Kamaldeen Muhammad">
-  <meta name="reply-to" content="opemuhammed35@gmail.com">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Stylesheet -->
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="files.css">
-
-  <!-- Appwrite SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/appwrite@8.4.0/dist/appwrite.min.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -56,7 +48,6 @@
             <a href="view.html"><button>View My Work</button></a>
           </div>
         </div>
-
         <div class="image">
           <img src="my-images/prof-2.png" alt="profile">
         </div>
@@ -79,13 +70,6 @@
           </p>
         </div>
       </div>
-
-      <p class="values">My Values</p>
-      <div class="v1">
-        <p>User Experience</p>
-        <p>Accessibility</p>
-        <p>Continuous Learning</p>
-      </div>
     </section>
 
     <!-- Skills Section -->
@@ -100,13 +84,10 @@
       </div>
 
       <div class="skills-container">
-        <!-- Frontend -->
         <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
         <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
         <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
         <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
-
-        <!-- Backend -->
         <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
         <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
         <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
@@ -115,89 +96,81 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services">
-      <h4 id="services">My Services</h4>
+    <section id="services">
+      <h4>My Services</h4>
       <div class="services-container">
         <div class="service-box">
           <h5>Custom Web Design</h5>
-          <p>Creating unique and visually appealing websites tailored to your brand.</p>
+          <p>Create unique, responsive designs tailored to your brand.</p>
         </div>
         <div class="service-box">
           <h5>Responsive Web Development</h5>
-          <p>Websites that work seamlessly on desktops, tablets, and mobile devices.</p>
+          <p>Websites that look great on desktop, tablet, and mobile.</p>
         </div>
         <div class="service-box">
           <h5>E-commerce Solutions</h5>
-          <p>Building online stores with secure payment and product management.</p>
+          <p>Online stores optimized for sales and user experience.</p>
         </div>
         <div class="service-box">
-          <h5>Web Application Development</h5>
-          <p>Interactive web apps to automate processes and improve user experience.</p>
+          <h5>Web Application</h5>
+          <p>Custom web apps with robust backend functionality.</p>
         </div>
         <div class="service-box">
-          <h5>Search Engine Optimization</h5>
-          <p>Optimize your website to rank higher in search engines and attract traffic.</p>
+          <h5>SEO</h5>
+          <p>Search engine optimization to boost your online presence.</p>
         </div>
         <div class="service-box">
           <h5>Web Hosting</h5>
-          <p>Reliable hosting solutions to keep your website online 24/7.</p>
+          <p>Reliable hosting with fast load speeds and uptime.</p>
         </div>
         <div class="service-box">
-          <h5>Web Maintenance & Support</h5>
-          <p>Ongoing support to update, secure, and maintain your website.</p>
+          <h5>Maintenance & Support</h5>
+          <p>Ongoing updates, fixes, and support for your site.</p>
         </div>
       </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact">
+      <h5>Contact Me</h5>
+      <div class="contact-container">
+        <div class="contact-info">
+          <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+          <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
+          <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+        </div>
+
+        <div class="contact-form">
+          <form id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Full name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email">
+
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Message..."></textarea>
+
+            <input type="submit" value="Send Message">
+          </form>
+          <p id="formStatus"></p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer / Contact Section -->
-  <footer id="foot">
-    <h5 id="contact">Contact Me</h5>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
-        <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
-        <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
-      </div>
-
-      <div class="contact-form">
-        <form id="contactForm">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Full name" required>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Your email" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" rows="5" placeholder="Message..." required></textarea>
-
-          <input type="submit" value="Send Message">
-        </form>
-        <p id="formStatus"></p>
-      </div>
-    </div>
-
-    <!-- Social Media Links -->
+  <!-- Footer -->
+  <footer>
     <div class="social-links">
       <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
       <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
       <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-
     <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#services">Services</a>
-    </nav>
-
-    <button id="backToTop">⬆ Top</button>
   </footer>
 
-  <!-- External JS -->
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>
