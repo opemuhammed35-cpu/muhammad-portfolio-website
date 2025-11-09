@@ -68,29 +68,3 @@ window.addEventListener('scroll', () => {
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-// ===== Services Horizontal Scroll (Infinite Loop) =====
-const servicesContainer = document.querySelector('.services-container');
-let scrollAmount = 0;
-
-function scrollServices() {
-  if (!servicesContainer) return;
-  
-  scrollAmount += 1; // scroll speed
-  if (scrollAmount >= servicesContainer.scrollWidth / 2) {
-    scrollAmount = 0; // loop back to start
-  }
-  
-  servicesContainer.scrollTo({
-    left: scrollAmount,
-    behavior: 'smooth'
-  });
-  
-  requestAnimationFrame(scrollServices);
-}
-
-// Duplicate the items for seamless infinite scroll
-if (servicesContainer) {
-  servicesContainer.innerHTML += servicesContainer.innerHTML;
-  scrollServices();
-}
