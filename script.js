@@ -71,16 +71,25 @@ backToTop.addEventListener('click', () => {
 
 // ===== Services Auto Scroll =====
 const servicesContainer = document.querySelector('.services-container');
-let scrollAmount = 0;
+let scrollPos = 0;
+let direction = 1; // 1 = right, -1 = left
+
 function autoScrollServices() {
   if (!servicesContainer) return;
-  scrollAmount += 1;
-  if (scrollAmount > servicesContainer.scrollWidth - servicesContainer.clientWidth) {
-    scrollAmount = 0;
+
+  scrollPos += direction * 2; // scroll speed
+  servicesContainer.scrollLeft = scrollPos;
+
+  // reverse direction when reaching start or end
+  if (scrollPos >= servicesContainer.scrollWidth - servicesContainer.clientWidth) {
+    direction = -1;
+  } else if (scrollPos <= 0) {
+    direction = 1;
   }
-  servicesContainer.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+
   requestAnimationFrame(autoScrollServices);
 }
+
 autoScrollServices();
 
 // ===== Appwrite Contact Form =====
@@ -101,7 +110,7 @@ form.addEventListener('submit', async (e) => {
   const message = form.message.value;
 
   try {
-    // Replace 'messages' with your collection ID
+    // Replace '690f36bd0014b1e3edc7' with your collection ID
     const response = await database.createDocument('690f36bd0014b1e3edc7', 'unique()', {
       name,
       email,
