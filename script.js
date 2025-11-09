@@ -69,60 +69,28 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ===== Services Auto Scroll =====
+// ===== Services Horizontal Scroll (Infinite Loop) =====
 const servicesContainer = document.querySelector('.services-container');
-let scrollPos = 0;
-let direction = 1; // 1 = right, -1 = left
+let scrollAmount = 0;
 
-function autoScrollServices() {
+function scrollServices() {
   if (!servicesContainer) return;
-
-  scrollPos += direction * 2; // scroll speed
-  servicesContainer.scrollLeft = scrollPos;
-
-  // reverse direction when reaching start or end
-  if (scrollPos >= servicesContainer.scrollWidth - servicesContainer.clientWidth) {
-    direction = -1;
-  } else if (scrollPos <= 0) {
-    direction = 1;
+  
+  scrollAmount += 1; // scroll speed
+  if (scrollAmount >= servicesContainer.scrollWidth / 2) {
+    scrollAmount = 0; // loop back to start
   }
-
-  requestAnimationFrame(autoScrollServices);
+  
+  servicesContainer.scrollTo({
+    left: scrollAmount,
+    behavior: 'smooth'
+  });
+  
+  requestAnimationFrame(scrollServices);
 }
 
-autoScrollServices();
-
-// ===== Appwrite Contact Form =====
-const client = new Appwrite.Client()
-  .setEndpoint('https://fra.cloud.appwrite.io/v1') // Your API Endpoint
-  .setProject('690f2da00003aede713b'); // Your Project ID
-
-const database = new Appwrite.Database(client);
-
-const form = document.getElementById('contactForm');
-const status = document.getElementById('formStatus');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const name = form.name.value;
-  const email = form.email.value;
-  const message = form.message.value;
-
-  try {
-    // Replace '690f36bd0014b1e3edc7' with your collection ID
-    const response = await database.createDocument('690f36bd0014b1e3edc7', 'unique()', {
-      name,
-      email,
-      message
-    });
-
-    status.textContent = "Message sent successfully!";
-    status.style.color = "lightgreen";
-    form.reset();
-  } catch (error) {
-    console.error(error);
-    status.textContent = "Failed to send message.";
-    status.style.color = "red";
-  }
-});
+// Duplicate the items for seamless infinite scroll
+if (servicesContainer) {
+  servicesContainer.innerHTML += servicesContainer.innerHTML;
+  scrollServices();
+}
