@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍔 Menu Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .item-name {
+      font-weight: bold;
+      color: #333;
+    }
+    .list {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .list ul {
+      list-style: none;
+      padding: 0;
+    }
+    .list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .list li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center">🍔 Our Menu Gallery</h1>
+  
+  <div class="list">
+    <h2>Click to view each item:</h2>
+    <ul>
+      <li>🍔 burger.jpg</li>
+      <li>🌶️ spicy_jalapeno_burger.jpg</li>
+      <li>🥗 veggie_delight.jpg</li>
+      <li>🍟 crispy_fries.jpg</li>
+      <li>🧅 onion_rings.jpg</li>
+      <li>🍗 chicken_tender.jpg</li>
+      <li>🍕 margarita_pizza.jpg</li>
+      <li>🍕 pepperoni_pizza.jpg</li>
+      <li>🥗 garden_salad.jpg</li>
+      <li>🥗 caesar_salad.jpg</li>
+      <li>🥤 chocolate_milkshake.jpg</li>
+      <li>🍓 strawberry_smoothie.jpg</li>
+      <li>🍹 iced_tea.jpg</li>
+      <li>🍋 lemonade.jpg</li>
+      <li>☕ coffee.jpg</li>
+    </ul>
+  </div>
+
+  <div class="gallery">
+    <div class="item">
+      <img src="menu-images/burger.jpg" alt="burger">
+      <div class="item-name">burger.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/spicy_jalapeno_burger.jpg" alt="spicy jalapeno burger">
+      <div class="item-name">spicy_jalapeno_burger.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/veggie_delight.jpg" alt="veggie delight">
+      <div class="item-name">veggie_delight.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/crispy_fries.jpg" alt="crispy fries">
+      <div class="item-name">crispy_fries.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/onion_rings.jpg" alt="onion rings">
+      <div class="item-name">onion_rings.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/chicken_tender.jpg" alt="chicken tender">
+      <div class="item-name">chicken_tender.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/margarita_pizza.jpg" alt="margarita pizza">
+      <div class="item-name">margarita_pizza.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/pepperoni_pizza.jpg" alt="pepperoni pizza">
+      <div class="item-name">pepperoni_pizza.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/garden_salad.jpg" alt="garden salad">
+      <div class="item-name">garden_salad.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/caesar_salad.jpg" alt="caesar salad">
+      <div class="item-name">caesar_salad.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/chocolate_milkshake.jpg" alt="chocolate milkshake">
+      <div class="item-name">chocolate_milkshake.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/strawberry_smoothie.jpg" alt="strawberry smoothie">
+      <div class="item-name">strawberry_smoothie.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/iced_tea.jpg" alt="iced tea">
+      <div class="item-name">iced_tea.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/lemonade.jpg" alt="lemonade">
+      <div class="item-name">lemonade.jpg</div>
+    </div>
+    <div class="item">
+      <img src="menu-images/coffee.jpg" alt="coffee">
+      <div class="item-name">coffee.jpg</div>
+    </div>
+  </div>
+
+  <footer style="text-align:center; margin-top:30px">
+    <p>Click any image to enlarge (if browser supports) | All images named exactly as listed</p>
+  </footer>
+</body>
+      </html>
+      
