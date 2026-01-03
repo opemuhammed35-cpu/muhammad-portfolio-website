@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,6 +9,7 @@
       font-family: Arial, sans-serif;
       background: #f0f0f0;
       padding: 20px;
+      transition: all 0.3s;
     }
     .gallery {
       display: grid;
@@ -23,6 +24,11 @@
       border-radius: 10px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       text-align: center;
+      transition: all 0.3s;
+    }
+    .item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .item img {
       width: 100%;
@@ -30,10 +36,20 @@
       object-fit: cover;
       border-radius: 5px;
       margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .item img:hover {
+      transform: scale(1.1);
     }
     .item-name {
       font-weight: bold;
       color: #333;
+    }
+    .price {
+      color: #ff6b6b;
+      font-weight: bold;
+      margin: 5px 0;
     }
     .list {
       max-width: 800px;
@@ -53,9 +69,76 @@
     .list li:last-child {
       border-bottom: none;
     }
+    .order-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .order-btn:hover {
+      background: #ff4757;
+    }
+    #darkMode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .dark-mode {
+      background: #1a1a1a;
+      color: #f0f0f0;
+    }
+    .dark-mode .item {
+      background: #2d2d2d;
+      color: #f0f0f0;
+    }
+    .dark-mode .list {
+      background: #2d2d2d;
+      color: #f0f0f0;
+    }
+    .dark-mode .order-btn {
+      background: #764ba2;
+    }
+    .dark-mode #darkMode {
+      background: #f0f0f0;
+      color: #333;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <button id="darkMode">🌙 Dark Mode</button>
   <h1 style="text-align:center">🍔 Our Menu Gallery</h1>
   
   <div class="list">
@@ -81,70 +164,117 @@
 
   <div class="gallery">
     <div class="item">
-      <img src="menu-images/burger.jpg" alt="burger">
+      <img src="burger.jpg" alt="burger" onclick="zoom(this)">
       <div class="item-name">burger.jpg</div>
+      <div class="price">$8.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/spicy_jalapeno_burger.jpg" alt="spicy jalapeno burger">
+      <img src="spicy_jalapeno_burger.jpg" alt="spicy jalapeno burger" onclick="zoom(this)">
       <div class="item-name">spicy_jalapeno_burger.jpg</div>
+      <div class="price">$9.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/veggie_delight.jpg" alt="veggie delight">
+      <img src="veggie_delight.jpg" alt="veggie delight" onclick="zoom(this)">
       <div class="item-name">veggie_delight.jpg</div>
+      <div class="price">$7.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/crispy_fries.jpg" alt="crispy fries">
+      <img src="crispy_fries.jpg" alt="crispy fries" onclick="zoom(this)">
       <div class="item-name">crispy_fries.jpg</div>
+      <div class="price">$3.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/onion_rings.jpg" alt="onion rings">
+      <img src="onion_rings.jpg" alt="onion rings" onclick="zoom(this)">
       <div class="item-name">onion_rings.jpg</div>
+      <div class="price">$4.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/chicken_tender.jpg" alt="chicken tender">
+      <img src="chicken_tender.jpg" alt="chicken tender" onclick="zoom(this)">
       <div class="item-name">chicken_tender.jpg</div>
+      <div class="price">$6.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/margarita_pizza.jpg" alt="margarita pizza">
+      <img src="margarita_pizza.jpg" alt="margarita pizza" onclick="zoom(this)">
       <div class="item-name">margarita_pizza.jpg</div>
+      <div class="price">$10.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/pepperoni_pizza.jpg" alt="pepperoni pizza">
+      <img src="pepperoni_pizza.jpg" alt="pepperoni pizza" onclick="zoom(this)">
       <div class="item-name">pepperoni_pizza.jpg</div>
+      <div class="price">$11.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/garden_salad.jpg" alt="garden salad">
+      <img src="garden_salad.jpg" alt="garden salad" onclick="zoom(this)">
       <div class="item-name">garden_salad.jpg</div>
+      <div class="price">$5.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/caesar_salad.jpg" alt="caesar salad">
+      <img src="caesar_salad.jpg" alt="caesar salad" onclick="zoom(this)">
       <div class="item-name">caesar_salad.jpg</div>
+      <div class="price">$6.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
-    <div class="item">
-      <img src="menu-images/chocolate_milkshake.jpg" alt="chocolate milkshake">
+           <div class="item">
+      <img src="chocolate_milkshake.jpg" alt="chocolate milkshake" onclick="zoom(this)">
       <div class="item-name">chocolate_milkshake.jpg</div>
+      <div class="price">$4.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/strawberry_smoothie.jpg" alt="strawberry smoothie">
+      <img src="strawberry_smoothie.jpg" alt="strawberry smoothie" onclick="zoom(this)">
       <div class="item-name">strawberry_smoothie.jpg</div>
+      <div class="price">$4.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/iced_tea.jpg" alt="iced tea">
+      <img src="iced_tea.jpg" alt="iced tea" onclick="zoom(this)">
       <div class="item-name">iced_tea.jpg</div>
+      <div class="price">$2.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/lemonade.jpg" alt="lemonade">
+      <img src="lemonade.jpg" alt="lemonade" onclick="zoom(this)">
       <div class="item-name">lemonade.jpg</div>
+      <div class="price">$3.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
     <div class="item">
-      <img src="menu-images/coffee.jpg" alt="coffee">
+      <img src="coffee.jpg" alt="coffee" onclick="zoom(this)">
       <div class="item-name">coffee.jpg</div>
+      <div class="price">$2.99</div>
+      <button class="order-btn">Order Now</button>
     </div>
   </div>
 
-  <footer style="text-align:center; margin-top:30px">
-    <p>Click any image to enlarge (if browser supports) | All images named exactly as listed</p>
-  </footer>
+  <!-- Modal for zoom -->
+  <div class="modal" id="zoomModal" onclick="closeZoom()">
+    <span class="close">&times;</span>
+    <img id="zoomImg">
+  </div>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById('darkMode').onclick = () => {
+      document.body.classList.toggle('dark-mode');
+    };
+
+    // Image zoom
+    function zoom(img) {
+      document.getElementById('zoomImg').src = img.src;
+      document.getElementById('zoomModal').style.display = 'flex';
+    }
+    function closeZoom() {
+      document.getElementById('zoomModal').style.display = 'none';
+    }
+  </script>
 </body>
-      </html>
-      
+</html>
