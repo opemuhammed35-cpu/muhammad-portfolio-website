@@ -51,7 +51,6 @@
     .skill { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border: 2px solid #ddd; border-radius: 10px; background: white; transition: transform 0.3s ease, background 0.3s ease; }
     .skill img { max-width: 60%; max-height: 60%; }
     .skill:hover { transform: scale(1.1); background: #f5f5f5; }
-    .hidden { display: none; }
 
     /* ===== Services Section ===== */
     #services { padding: 30px 20px; background: #111; margin: 30px 0; }
@@ -111,18 +110,15 @@
     </nav>
   </header>
 
-  <!-- Main -->
   <main>
     <!-- Hero Section -->
     <section class="s1">
       <div class="typing" id="typing"></div>
       <div class="container">
         <div class="text">
-          <p>
-            I like to craft solid and scalable frontend and backend products with great user experience. <br><br>
-            Highly skilled at progressive enhancement, design systems & UI Engineering. <br><br>
-            Proven experience building successful products for clients across several countries.
-          </p>
+          <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
+          Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
+          Proven experience building successful products for clients across several countries.</p>
           <div class="b1">
             <a href="#contact"><button>Contact Me</button></a>
             <a href="#projects"><button>View My Work</button></a>
@@ -138,16 +134,10 @@
     <section>
       <h3 id="about">About Me</h3>
       <div class="abt">
-        <div class="prof">
-          <img src="my-images/prof-2.png" alt="profile">
-        </div>
+        <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
         <div>
           <p class="who-1">Who am I</p>
-          <p class="who">
-            I'm a passionate web developer with 3+ years of experience creating modern, responsive websites and applications. My journey in tech started when I built my first website at 16, and I've been hooked ever since.
-            <br><br>
-            I specialize in frontend development with React and Vue.js, but I'm also comfortable working with backend technologies like Node.js and Express. I believe in writing clean, maintainable code and creating intuitive user experiences.
-          </p>
+          <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
         </div>
       </div>
     </section>
@@ -155,7 +145,6 @@
     <!-- Skills Section -->
     <section class="s3">
       <h4 id="skills">My Skills</h4>
-      <p class="skillset">I've honed my skills in the following languages and tools.</p>
       <div class="filter-buttons">
         <button class="active" data-filter="all">All</button>
         <button data-filter="frontend">Frontend</button>
@@ -180,10 +169,6 @@
         <div class="service-box"><h5>Custom Web Design</h5><p>Create unique, responsive designs tailored to your brand.</p></div>
         <div class="service-box"><h5>Responsive Web Development</h5><p>Websites that look great on desktop, tablet, and mobile.</p></div>
         <div class="service-box"><h5>E-commerce Solutions</h5><p>Online stores optimized for sales and user experience.</p></div>
-        <div class="service-box"><h5>Web Application</h5><p>Custom web apps with robust backend functionality.</p></div>
-        <div class="service-box"><h5>SEO</h5><p>Search engine optimization to boost your online presence.</p></div>
-        <div class="service-box"><h5>Web Hosting</h5><p>Reliable hosting with fast load speeds and uptime.</p></div>
-        <div class="service-box"><h5>Maintenance & Support</h5><p>Ongoing updates, fixes, and support for your site.</p></div>
       </div>
     </section>
 
@@ -191,26 +176,9 @@
     <section id="projects">
       <h4>My Projects</h4>
       <div class="projects-container">
-        <div class="project">
-          <h3>Project 1</h3>
-          <a href="rest.html"><img src="my-images/web1.jpg" alt="Project 1"></a>
-          <p>Website for a restaurant. Click the image to view.</p>
-        </div>
-        <div class="project">
-          <h3>Project 2</h3>
-          <a href="https://femicoiture.vercel.app/"><img src="femi.jpg" alt="Project 2"></a>
-          <p>Fashion house website. Click the image to view.</p>
-        </div>
-        <div class="project">
-          <h3>Project 3</h3>
-          <a href="menu.html"><img src="menus.jpg" alt="Project 3"></a>
-          <p>Menu page for a restaurant. Click image to see.</p>
-        </div>
-        <div class="project">
-          <h3>Project 4</h3>
-          <img src="my-images/web 4.jpg" alt="Project 4">
-          <p>My school project.</p>
-        </div>
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="femi.jpg"></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="menus.jpg"></a><p>Menu page for a restaurant</p></div>
       </div>
     </section>
 
@@ -225,12 +193,9 @@
         </div>
         <div class="contact-form">
           <form id="contactForm">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Full name">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Message..."></textarea>
+            <label for="name">Name</label><input type="text" id="name" name="name" placeholder="Full name">
+            <label for="email">Email</label><input type="email" id="email" name="email" placeholder="Your email">
+            <label for="message">Message</label><textarea id="message" rows="5" placeholder="Message..."></textarea>
             <input type="submit" value="Send Message">
           </form>
           <p id="formStatus"></p>
@@ -252,31 +217,33 @@
 
   <!-- Internal JS -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const hamburger = document.getElementById('hamburger');
-      const navLinks = document.getElementById('nav-links');
-      hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-      const typingElement = document.getElementById('typing');
-      const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
-      let wordIndex = 0, charIndex = 0;
+    // Typing Effect
+    const typingElement = document.getElementById('typing');
+    const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
+    let wordIndex = 0, charIndex = 0;
+    function type(){if(charIndex<words[wordIndex].length){typingElement.textContent+=words[wordIndex][charIndex++];setTimeout(type,100);}else setTimeout(erase,1500);}
+    function erase(){if(charIndex>0){typingElement.textContent=words[wordIndex].substring(0,--charIndex);setTimeout(erase,50);}else{wordIndex=(wordIndex+1)%words.length;setTimeout(type,500);}}
+    type();
 
-      function type() {
-        if (charIndex < words[wordIndex].length) {
-          typingElement.textContent += words[wordIndex][charIndex++];
-          setTimeout(type, 100);
-        } else setTimeout(erase, 2000);
-      }
-
-      function erase() {
-        if (charIndex > 0) {
-          typingElement.textContent = words[wordIndex].substring(0, --charIndex);
-          setTimeout(erase, 50);
-        } else {
-          wordIndex = (wordIndex + 1) % words.length;
-          setTimeout(type, 500);
-        }
-      }
-      type();
-
-      const filterButtons = document.querySelectorAll(".filter-buttons
+    // Skills Filter
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const skills = document.querySelectorAll('.skill');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector('.filter-buttons .active').classList.remove('active');
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        skills.forEach(skill => {
+          if(filter==='all'||skill.classList.contains(filter)) skill.style.display='flex';
+          else skill.style.display='none';
+        });
+      });
+    });
+  </script>
+</body>
+                                                                                                   </html>
