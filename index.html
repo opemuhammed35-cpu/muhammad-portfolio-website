@@ -10,116 +10,105 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- QRCode.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+  <!-- Internal CSS -->
   <style>
     /* ===== Global Reset ===== */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background-color: #000; color: #ccc; font-family: Arial, sans-serif; line-height: 1.6; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#000; color:#ccc; font-family:Arial,sans-serif; line-height:1.6; }
 
     /* ===== Header & Navigation ===== */
-    header { display: flex; justify-content: space-between; align-items: center; background: #111; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
-    header h1 { font-size: 22px; color: #00aaff; }
-    .nav-links { display: flex; gap: 20px; transition: transform 0.4s ease; }
-    .nav-links a { text-decoration: none; font-size: 18px; color: lightblue; transition: color 0.3s ease; }
-    .nav-links a:hover { color: #fff; }
+    header { display:flex; justify-content:space-between; align-items:center; background:#111; padding:15px 20px; position:sticky; top:0; z-index:1000; }
+    header h1 { font-size:22px; color:#00aaff; }
+    .nav-links { display:flex; gap:20px; transition: right 0.3s ease; position:fixed; top:0; right:-300px; height:100%; flex-direction:column; background:#111; padding:50px 20px; width:250px; z-index:999; }
+    .nav-links.show { right:0; }
+    .nav-links a { text-decoration:none; font-size:18px; margin-bottom:15px; color:lightblue; }
+    .nav-links a:hover { color:#fff; }
 
     /* Hamburger */
-    .hamburger { display: none; font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
-
-    /* Slide-in animation */
-    @media (max-width: 768px) {
-      .nav-links { 
-        flex-direction: column;
-        position: fixed;
-        top: 0; right: 0;
-        height: 100vh;
-        width: 250px;
-        background: #111;
-        padding: 60px 20px;
-        gap: 20px;
-        transform: translateX(100%);
-        z-index: 1001;
-      }
-      .nav-links.show { transform: translateX(0); }
-      .hamburger { display: block; }
-    }
+    .hamburger { font-size:28px; background:none; border:none; color:white; cursor:pointer; z-index:1001; }
 
     /* ===== Hero Section ===== */
-    .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 40px 20px; gap: 20px; }
-    .text { flex: 1 1 300px; font-size: 20px; color: #fff; }
-    .text button { margin-top: 15px; padding: 10px 20px; border: none; background: #00aaff; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
-    .text button:hover { background: green; }
-    .image img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid lightblue; }
+    .container { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:40px 20px; gap:20px; }
+    .text { flex:1 1 300px; font-size:20px; color:#fff; }
+    .text button { margin-top:15px; padding:10px 20px; border:none; background:#00aaff; color:white; border-radius:5px; cursor:pointer; transition:background 0.3s ease; }
+    .text button:hover { background:green; }
+    .image img { width:250px; height:250px; border-radius:50%; border:4px solid lightblue; }
 
-    /* ===== About Section ===== */
-    .abt { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; background: #111; padding: 30px; border-radius: 12px; margin: 30px 0; }
-    .prof img { width: 250px; height: 250px; border-radius: 10px; border: 3px solid #00aaff; }
-    .who { font-size: 18px; max-width: 600px; color: #ddd; }
+    /* Typing */
+    .typing { border-right:2px solid #00ffcc; white-space:nowrap; overflow:hidden; width:fit-content; animation:blinkCursor 0.8s step-end infinite; font-size:30px; color:lightblue; margin:20px 0; }
+    @keyframes blinkCursor { 50% { border-color:transparent; } }
 
-    /* ===== Skills Section ===== */
-    .filter-buttons { margin-bottom: 20px; text-align: center; }
-    .filter-buttons button { margin: 5px; padding: 10px 20px; border: none; background: #444; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
-    .filter-buttons button.active, .filter-buttons button:hover { background: #007bff; }
-    .skills-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-    .skill { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border: 2px solid #ddd; border-radius: 10px; background: white; transition: transform 0.3s ease, background 0.3s ease; }
-    .skill img { max-width: 60%; max-height: 60%; }
-    .skill:hover { transform: scale(1.1); background: #f5f5f5; }
+    /* About */
+    .abt { display:flex; flex-wrap:wrap; gap:20px; align-items:flex-start; background:#111; padding:30px; border-radius:12px; margin:30px 0; }
+    .prof img { width:250px; height:250px; border-radius:10px; border:3px solid #00aaff; }
+    .who { font-size:18px; max-width:600px; color:#ddd; }
 
-    /* ===== Services Section ===== */
-    #services { padding: 30px 20px; background: #111; margin: 30px 0; }
-    #services h4 { text-align: center; color: #00aaff; margin-bottom: 20px; }
-    .services-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
-    .services-container::-webkit-scrollbar { height: 8px; }
-    .services-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
-    .service-box { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
-    .service-box h5 { margin-bottom: 10px; color: #00aaff; }
-    .service-box p { font-size: 14px; color: #ccc; }
+    /* Skills */
+    .filter-buttons { margin-bottom:20px; text-align:center; }
+    .filter-buttons button { margin:5px; padding:10px 20px; border:none; background:#444; color:white; border-radius:5px; cursor:pointer; transition:background 0.3s ease; }
+    .filter-buttons button.active, .filter-buttons button:hover { background:#007bff; }
+    .skills-container { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+    .skill { width:80px; height:80px; display:flex; align-items:center; justify-content:center; border:2px solid #ddd; border-radius:10px; background:white; transition:transform 0.3s ease, background 0.3s ease; }
+    .skill img { max-width:60%; max-height:60%; }
+    .skill:hover { transform:scale(1.1); background:#f5f5f5; }
 
-    /* ===== Projects Section ===== */
-    #projects { padding: 30px 20px; }
-    .projects-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
-    .projects-container::-webkit-scrollbar { height: 8px; }
-    .projects-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
-    .project { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
-    .project h3 { margin-bottom: 10px; color: #00aaff; }
-    .project p { font-size: 14px; color: #ccc; }
-    .project img { border-radius: 8px; margin-bottom: 10px; max-width: 100%; }
+    /* Services */
+    #services { padding:30px 20px; background:#111; margin:30px 0; }
+    #services h4 { text-align:center; color:#00aaff; margin-bottom:20px; }
+    .services-container { display:flex; gap:15px; overflow-x:auto; scroll-behavior:smooth; padding-bottom:10px; }
+    .services-container::-webkit-scrollbar { height:8px; }
+    .services-container::-webkit-scrollbar-thumb { background-color:#00aaff; border-radius:10px; }
+    .service-box { flex:0 0 250px; background:#222; color:white; padding:20px; border-radius:10px; min-height:150px; display:flex; flex-direction:column; justify-content:center; text-align:center; box-shadow:0 0 10px #000; transition:transform 0.3s ease; }
+    .service-box h5 { margin-bottom:10px; color:#00aaff; }
+    .service-box p { font-size:14px; color:#ccc; }
 
-    /* ===== Contact Section ===== */
-    .contact-container { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; background: #111; padding: 30px; border-radius: 12px; }
-    .contact-info { flex: 1 1 250px; font-size: 16px; color: #ccc; }
-    .contact-form { flex: 1 1 300px; }
-    form { display: flex; flex-direction: column; gap: 10px; }
-    input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; border: 1px solid #444; border-radius: 5px; background: #222; color: white; }
-    input[type="submit"] { width: fit-content; padding: 10px 20px; background-color: #00aaff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
-    input[type="submit"]:hover { background-color: green; }
+    /* Projects */
+    #projects { padding:30px 20px; }
+    #projects h4 { text-align:center; color:#00aaff; margin-bottom:20px; }
+    .projects-container { display:flex; gap:15px; overflow-x:auto; scroll-behavior:smooth; padding-bottom:10px; }
+    .projects-container::-webkit-scrollbar { height:8px; }
+    .projects-container::-webkit-scrollbar-thumb { background-color:#00aaff; border-radius:10px; }
+    .project { flex:0 0 250px; background:#222; color:white; padding:20px; border-radius:10px; min-height:150px; display:flex; flex-direction:column; justify-content:center; text-align:center; box-shadow:0 0 10px #000; transition:transform 0.3s ease; }
+    .project h3 { margin-bottom:10px; color:#00aaff; }
+    .project p { font-size:14px; color:#ccc; }
+    .project img { border-radius:8px; margin-bottom:10px; max-width:100%; }
 
-    /* ===== CV/QR Section ===== */
-    .cv-section { display: flex; gap: 20px; align-items: center; justify-content: center; margin: 40px 0; flex-wrap: wrap; }
-    .cv-section button, .cv-section a { padding: 10px 20px; border: none; border-radius: 5px; background-color: #00aaff; color: white; cursor: pointer; text-decoration: none; transition: background 0.3s ease; }
-    .cv-section button:hover, .cv-section a:hover { background-color: green; }
-    #qrcode { background: #222; padding: 10px; border-radius: 10px; }
+    /* Contact */
+    .contact-container { display:flex; flex-wrap:wrap; gap:20px; margin-top:20px; background:#111; padding:30px; border-radius:12px; }
+    .contact-info { flex:1 1 250px; font-size:16px; color:#ccc; }
+    .contact-form { flex:1 1 300px; }
+    form { display:flex; flex-direction:column; gap:10px; }
+    input[type="text"], input[type="email"], textarea { width:100%; padding:12px; border:1px solid #444; border-radius:5px; background:#222; color:white; }
+    input[type="submit"] { width:fit-content; padding:10px 20px; background-color:#00aaff; color:white; border:none; border-radius:5px; cursor:pointer; transition:background 0.3s ease; }
+    input[type="submit"]:hover { background-color:green; }
 
-    /* ===== Footer ===== */
-    footer { text-align: center; padding: 20px; background: #111; margin-top: 40px; color: #aaa; }
-    .social-links { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
-    .social-links a { color: #00aaff; font-size: 28px; transition: transform 0.3s ease, color 0.3s ease; }
-    .social-links a:hover { color: #00ffcc; transform: scale(1.2); }
+    /* CV/QR Section */
+    .cv-section { display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:center; background:#111; padding:30px; margin-top:30px; border-radius:12px; }
+    .cv-section button, .cv-section a { padding:10px 20px; background:#00aaff; color:white; border:none; border-radius:5px; cursor:pointer; text-decoration:none; transition:background 0.3s ease; }
+    .cv-section button:hover, .cv-section a:hover { background:green; }
+    .qrcode-container { width:150px; height:150px; }
 
-    @media (max-width: 768px) {
-      .container, .abt, .cv-section { flex-direction: column; text-align: center; }
-      .image img, .prof img { width: 200px; height: 200px; }
-      .service-box, .project { flex: 0 0 200px; }
-      .nav-links { padding-top: 80px; }
+    /* Footer */
+    footer { text-align:center; padding:20px; background:#111; margin-top:40px; color:#aaa; }
+    .social-links { display:flex; justify-content:center; gap:20px; margin:20px 0; flex-wrap:wrap; }
+    .social-links a { color:#00aaff; font-size:28px; transition:transform 0.3s ease, color 0.3s ease; }
+    .social-links a:hover { color:#00ffcc; transform:scale(1.2); }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .container, .abt, .cv-section { flex-direction:column; text-align:center; }
+      .image img, .prof img { width:200px; height:200px; }
+      .service-box, .project { flex:0 0 200px; }
+      .nav-links { width:200px; padding-top:60px; }
     }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
-    <h1>Hi, I'm Muhammad</h1>
+    <h1 id="home">Hi, I'm Muhammad</h1>
     <button class="hamburger" id="hamburger">☰</button>
     <nav class="nav-links" id="nav-links">
       <a href="#home">Home</a>
@@ -127,14 +116,14 @@
       <a href="#skills">Skills</a>
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
-      <a href="/resume of kamal.pdf" download>Download CV</a>
+      <a href="/resume%20of%20kamal.pdf" download>Download CV</a>
       <a href="#contact">Hire Me</a>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <main>
-    <section class="s1" id="home">
+    <!-- Hero -->
+    <section class="s1">
       <div class="typing" id="typing"></div>
       <div class="container">
         <div class="text">
@@ -146,13 +135,15 @@
             <a href="#projects"><button>View My Work</button></a>
           </div>
         </div>
-        <div class="image"><img src="my-images/prof-2.png" alt="profile"></div>
+        <div class="image">
+          <img src="my-images/prof-2.png" alt="profile">
+        </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <h3>About Me</h3>
+    <!-- About -->
+    <section>
+      <h3 id="about">About Me</h3>
       <div class="abt">
         <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
         <div>
@@ -162,9 +153,9 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="s3" id="skills">
-      <h4>My Skills</h4>
+    <!-- Skills -->
+    <section class="s3">
+      <h4 id="skills">My Skills</h4>
       <div class="filter-buttons">
         <button class="active" data-filter="all">All</button>
         <button data-filter="frontend">Frontend</button>
@@ -182,7 +173,7 @@
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section id="services">
       <h4>My Services</h4>
       <div class="services-container">
@@ -192,24 +183,19 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="projects">
       <h4>My Projects</h4>
       <div class="projects-container">
-        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg" alt=""></a><p>Website for a restaurant</p></div>
-        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="my-images/femi.jpg" alt=""></a><p>Fashion house website</p></div>
-        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="my-images/menus.jpg" alt=""></a><p>Menu page for a restaurant</p></div>
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="https://i.ibb.co/f3JmG7L/femi.jpg"></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="my-images/menus.jpg"></a><p>Menu page for a restaurant</p></div>
+        <div class="project"><h3>Selar Project</h3><a href="https://selar.com/27e716"><img src="https://i.ibb.co/0QyZzFh/selar.jpg"></a><p>E-commerce platform project</p></div>
+        <div class="project"><h3>Ovampa Project</h3><a href="https://ovampa.com/new"><img src="https://i.ibb.co/ZVbT1S6/ovampa.jpg"></a><p>Marketing platform project</p></div>
       </div>
     </section>
 
-    <!-- CV Section -->
-    <section class="cv-section">
-      <div id="qrcode"></div>
-      <a href="/resume of kamal.pdf" download>Download CV</a>
-      <button onclick="copyCV()">Copy CV Link</button>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact">
       <h5>Contact Me</h5>
       <div class="contact-container">
@@ -230,34 +216,41 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="social-links">
-        <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
-      </div>
-      <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-    </footer>
-    <script>
+    <!-- CV/QR Section -->
+    <section class="cv-section">
+      <div class="qrcode-container" id="qrcode"></div>
+      <a href="/resume%20of%20kamal.pdf" download>Download CV</a>
+      <button onclick="copyCV()">Copy CV Link</button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
   // ===== Hamburger Toggle =====
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
-    // Toggle hamburger icon
     hamburger.textContent = navLinks.classList.contains('show') ? '✖' : '☰';
   });
 
-  // Close menu when a link is clicked
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  // Close menu when clicking a link
+  const navItems = navLinks.querySelectorAll('a');
+  navItems.forEach(link => {
     link.addEventListener('click', () => {
-      if(navLinks.classList.contains('show')){
-        navLinks.classList.remove('show');
-        hamburger.textContent = '☰';
-      }
+      navLinks.classList.remove('show');
+      hamburger.textContent = '☰';
     });
   });
 
@@ -267,7 +260,7 @@
   let wordIndex = 0, charIndex = 0;
 
   function type() {
-    if(charIndex < words[wordIndex].length){
+    if (charIndex < words[wordIndex].length) {
       typingElement.textContent += words[wordIndex][charIndex++];
       setTimeout(type, 100);
     } else {
@@ -276,7 +269,7 @@
   }
 
   function erase() {
-    if(charIndex > 0){
+    if (charIndex > 0) {
       typingElement.textContent = words[wordIndex].substring(0, --charIndex);
       setTimeout(erase, 50);
     } else {
@@ -297,29 +290,30 @@
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
       skills.forEach(skill => {
-        if(filter==='all' || skill.classList.contains(filter)) skill.style.display = 'flex';
-        else skill.style.display = 'none';
+        skill.style.display = (filter === 'all' || skill.classList.contains(filter)) ? 'flex' : 'none';
       });
     });
   });
 
-  // ===== QR Code Generation =====
+  // ===== QR Code =====
   const qrcode = new QRCode(document.getElementById("qrcode"), {
-    text: window.location.origin + "/resume of kamal.pdf",
+    text: "/resume%20of%20kamal.pdf",
     width: 150,
     height: 150,
-    colorDark : "#00aaff",
-    colorLight : "#000000",
+    colorDark : "#000000",
+    colorLight : "#ffffff",
     correctLevel : QRCode.CorrectLevel.H
   });
 
   // ===== Copy CV Link =====
   function copyCV() {
-    const cvLink = window.location.origin + "/resume of kamal.pdf";
+    const cvLink = window.location.origin + "/resume%20of%20kamal.pdf";
     navigator.clipboard.writeText(cvLink).then(() => {
       alert("CV link copied to clipboard!");
-    }).catch(err => console.error("Failed to copy: ", err));
+    }).catch(() => {
+      alert("Failed to copy CV link.");
+    });
   }
-</script>
+                 </script>
 </body>
   </html>
