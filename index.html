@@ -10,10 +10,9 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- QRCode.js Library -->
+  <!-- QRCode.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-  <!-- Internal CSS -->
   <style>
     /* ===== Global Reset ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,20 +21,30 @@
     /* ===== Header & Navigation ===== */
     header { display: flex; justify-content: space-between; align-items: center; background: #111; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
     header h1 { font-size: 22px; color: #00aaff; }
-    .nav-links { display: flex; gap: 20px; transition: transform 0.5s ease; }
+    .nav-links { display: flex; gap: 20px; transition: transform 0.4s ease; }
     .nav-links a { text-decoration: none; font-size: 18px; color: lightblue; transition: color 0.3s ease; }
     .nav-links a:hover { color: #fff; }
 
-    /* Hamburger Menu */
-    .hamburger { font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
+    /* Hamburger */
+    .hamburger { display: none; font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
 
-    /* Slide menu animation */
-    .nav-links { position: fixed; right: -250px; top: 0; height: 100vh; flex-direction: column; gap: 20px; background: #111; padding: 80px 20px; width: 250px; transform: translateX(0); z-index: 2000; }
-    .nav-links.show { right: 0; }
-
-    /* ===== Typing Effect ===== */
-    .typing { border-right: 2px solid #00ffcc; white-space: nowrap; overflow: hidden; width: fit-content; animation: blinkCursor 0.8s step-end infinite; font-size: 30px; color: lightblue; margin: 20px 0; }
-    @keyframes blinkCursor { 50% { border-color: transparent; } }
+    /* Slide-in animation */
+    @media (max-width: 768px) {
+      .nav-links { 
+        flex-direction: column;
+        position: fixed;
+        top: 0; right: 0;
+        height: 100vh;
+        width: 250px;
+        background: #111;
+        padding: 60px 20px;
+        gap: 20px;
+        transform: translateX(100%);
+        z-index: 1001;
+      }
+      .nav-links.show { transform: translateX(0); }
+      .hamburger { display: block; }
+    }
 
     /* ===== Hero Section ===== */
     .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 40px 20px; gap: 20px; }
@@ -61,12 +70,21 @@
     /* ===== Services Section ===== */
     #services { padding: 30px 20px; background: #111; margin: 30px 0; }
     #services h4 { text-align: center; color: #00aaff; margin-bottom: 20px; }
-    .services-container, .projects-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
-    .services-container::-webkit-scrollbar, .projects-container::-webkit-scrollbar { height: 8px; }
-    .services-container::-webkit-scrollbar-thumb, .projects-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
-    .service-box, .project { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
-    .service-box h5, .project h3 { margin-bottom: 10px; color: #00aaff; }
-    .service-box p, .project p { font-size: 14px; color: #ccc; }
+    .services-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
+    .services-container::-webkit-scrollbar { height: 8px; }
+    .services-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
+    .service-box { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
+    .service-box h5 { margin-bottom: 10px; color: #00aaff; }
+    .service-box p { font-size: 14px; color: #ccc; }
+
+    /* ===== Projects Section ===== */
+    #projects { padding: 30px 20px; }
+    .projects-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
+    .projects-container::-webkit-scrollbar { height: 8px; }
+    .projects-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
+    .project { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
+    .project h3 { margin-bottom: 10px; color: #00aaff; }
+    .project p { font-size: 14px; color: #ccc; }
     .project img { border-radius: 8px; margin-bottom: 10px; max-width: 100%; }
 
     /* ===== Contact Section ===== */
@@ -78,12 +96,11 @@
     input[type="submit"] { width: fit-content; padding: 10px 20px; background-color: #00aaff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
     input[type="submit"]:hover { background-color: green; }
 
-    /* ===== CV Section ===== */
-    .cv-section { display: flex; gap: 20px; flex-wrap: wrap; background: #111; padding: 20px; border-radius: 12px; margin-top: 30px; justify-content: center; }
-    .cv-box { display: flex; flex-direction: column; align-items: center; text-align: center; background: #222; padding: 20px; border-radius: 12px; min-width: 200px; }
-    .cv-box img { width: 150px; height: 150px; margin-bottom: 15px; }
-    .cv-box button { margin: 5px 0; padding: 8px 15px; border: none; border-radius: 5px; background: #00aaff; color: white; cursor: pointer; transition: background 0.3s ease; }
-    .cv-box button:hover { background: green; }
+    /* ===== CV/QR Section ===== */
+    .cv-section { display: flex; gap: 20px; align-items: center; justify-content: center; margin: 40px 0; flex-wrap: wrap; }
+    .cv-section button, .cv-section a { padding: 10px 20px; border: none; border-radius: 5px; background-color: #00aaff; color: white; cursor: pointer; text-decoration: none; transition: background 0.3s ease; }
+    .cv-section button:hover, .cv-section a:hover { background-color: green; }
+    #qrcode { background: #222; padding: 10px; border-radius: 10px; }
 
     /* ===== Footer ===== */
     footer { text-align: center; padding: 20px; background: #111; margin-top: 40px; color: #aaa; }
@@ -91,19 +108,18 @@
     .social-links a { color: #00aaff; font-size: 28px; transition: transform 0.3s ease, color 0.3s ease; }
     .social-links a:hover { color: #00ffcc; transform: scale(1.2); }
 
-    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .container, .abt, .cv-section { flex-direction: column; text-align: center; }
-      .image img, .prof img, .cv-box img { width: 200px; height: 200px; }
-      .cv-section { gap: 15px; }
-      .nav-links { width: 80%; padding-top: 100px; }
+      .image img, .prof img { width: 200px; height: 200px; }
+      .service-box, .project { flex: 0 0 200px; }
+      .nav-links { padding-top: 80px; }
     }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <h1 id="home">Hi, I'm Muhammad</h1>
+    <h1>Hi, I'm Muhammad</h1>
     <button class="hamburger" id="hamburger">☰</button>
     <nav class="nav-links" id="nav-links">
       <a href="#home">Home</a>
@@ -111,14 +127,14 @@
       <a href="#skills">Skills</a>
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
-      <a href="#downloadCV">Download CV</a>
+      <a href="/resume of kamal.pdf" download>Download CV</a>
       <a href="#contact">Hire Me</a>
     </nav>
   </header>
 
+  <!-- Hero Section -->
   <main>
-    <!-- Hero Section -->
-    <section class="s1">
+    <section class="s1" id="home">
       <div class="typing" id="typing"></div>
       <div class="container">
         <div class="text">
@@ -130,15 +146,13 @@
             <a href="#projects"><button>View My Work</button></a>
           </div>
         </div>
-        <div class="image">
-          <img src="my-images/prof-2.png" alt="profile">
-        </div>
+        <div class="image"><img src="my-images/prof-2.png" alt="profile"></div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section>
-      <h3 id="about">About Me</h3>
+    <section id="about">
+      <h3>About Me</h3>
       <div class="abt">
         <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
         <div>
@@ -149,8 +163,8 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="s3">
-      <h4 id="skills">My Skills</h4>
+    <section class="s3" id="skills">
+      <h4>My Skills</h4>
       <div class="filter-buttons">
         <button class="active" data-filter="all">All</button>
         <button data-filter="frontend">Frontend</button>
@@ -182,24 +196,17 @@
     <section id="projects">
       <h4>My Projects</h4>
       <div class="projects-container">
-        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
-        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="femi.jpg"></a><p>Fashion house website</p></div>
-        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="menus.jpg"></a><p>Menu page for a restaurant</p></div>
-        <div class="project"><h3>Selar</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar platform project</p></div>
-        <div class="project"><h3>Ovampa</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa platform project</p></div>
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg" alt=""></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="my-images/femi.jpg" alt=""></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="my-images/menus.jpg" alt=""></a><p>Menu page for a restaurant</p></div>
       </div>
     </section>
 
     <!-- CV Section -->
-    <section id="downloadCV">
-      <h4>My CV</h4>
-      <div class="cv-section">
-        <div class="cv-box">
-          <div id="qrcode"></div>
-          <a href="resume of kamal.pdf" download><button>Download CV</button></a>
-          <button onclick="copyCV()">Copy CV Link</button>
-        </div>
-      </div>
+    <section class="cv-section">
+      <div id="qrcode"></div>
+      <a href="/resume of kamal.pdf" download>Download CV</a>
+      <button onclick="copyCV()">Copy CV Link</button>
     </section>
 
     <!-- Contact Section -->
@@ -222,27 +229,36 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
-    </div>
-    <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-  </footer>
-
-<script>
-  // ===== Hamburger Menu =====
+    <!-- Footer -->
+    <footer>
+      <div class="social-links">
+        <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
+    </footer>
+    <script>
+  // ===== Hamburger Toggle =====
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
+    // Toggle hamburger icon
     hamburger.textContent = navLinks.classList.contains('show') ? '✖' : '☰';
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if(navLinks.classList.contains('show')){
+        navLinks.classList.remove('show');
+        hamburger.textContent = '☰';
+      }
+    });
   });
 
   // ===== Typing Effect =====
@@ -251,7 +267,7 @@
   let wordIndex = 0, charIndex = 0;
 
   function type() {
-    if (charIndex < words[wordIndex].length) {
+    if(charIndex < words[wordIndex].length){
       typingElement.textContent += words[wordIndex][charIndex++];
       setTimeout(type, 100);
     } else {
@@ -260,7 +276,7 @@
   }
 
   function erase() {
-    if (charIndex > 0) {
+    if(charIndex > 0){
       typingElement.textContent = words[wordIndex].substring(0, --charIndex);
       setTimeout(erase, 50);
     } else {
@@ -268,6 +284,7 @@
       setTimeout(type, 500);
     }
   }
+
   type();
 
   // ===== Skills Filter =====
@@ -280,7 +297,7 @@
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
       skills.forEach(skill => {
-        if (filter === 'all' || skill.classList.contains(filter)) skill.style.display = 'flex';
+        if(filter==='all' || skill.classList.contains(filter)) skill.style.display = 'flex';
         else skill.style.display = 'none';
       });
     });
@@ -291,9 +308,9 @@
     text: window.location.origin + "/resume of kamal.pdf",
     width: 150,
     height: 150,
-    colorDark: "#00aaff",
-    colorLight: "#222",
-    correctLevel: QRCode.CorrectLevel.H
+    colorDark : "#00aaff",
+    colorLight : "#000000",
+    correctLevel : QRCode.CorrectLevel.H
   });
 
   // ===== Copy CV Link =====
@@ -301,10 +318,8 @@
     const cvLink = window.location.origin + "/resume of kamal.pdf";
     navigator.clipboard.writeText(cvLink).then(() => {
       alert("CV link copied to clipboard!");
-    }).catch(() => {
-      alert("Failed to copy link.");
-    });
+    }).catch(err => console.error("Failed to copy: ", err));
   }
 </script>
-  
-  
+</body>
+  </html>
