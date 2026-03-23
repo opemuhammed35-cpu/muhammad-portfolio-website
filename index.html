@@ -11,6 +11,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+  <!-- Internal CSS -->
   <style>
     /* ===== Global Reset ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,26 +19,32 @@
 
     /* ===== Header & Navigation ===== */
     header { display: flex; justify-content: space-between; align-items: center; background: #111; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
+    .header-left { display: flex; align-items: center; gap: 15px; }
     header h1 { font-size: 22px; color: #00aaff; }
     .nav-links { display: flex; gap: 20px; }
     .nav-links a { text-decoration: none; font-size: 18px; color: lightblue; transition: color 0.3s ease; }
     .nav-links a:hover { color: #fff; }
 
+    /* Hamburger Menu */
     .hamburger { display: none; font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
 
+    /* ===== Typing Effect ===== */
     .typing { border-right: 2px solid #00ffcc; white-space: nowrap; overflow: hidden; width: fit-content; animation: blinkCursor 0.8s step-end infinite; font-size: 30px; color: lightblue; margin: 20px 0; }
     @keyframes blinkCursor { 50% { border-color: transparent; } }
 
+    /* ===== Hero Section ===== */
     .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 40px 20px; gap: 20px; }
     .text { flex: 1 1 300px; font-size: 20px; color: #fff; }
     .text button { margin-top: 15px; padding: 10px 20px; border: none; background: #00aaff; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
     .text button:hover { background: green; }
     .image img { width: 250px; height: 250px; border-radius: 50%; border: 4px solid lightblue; }
 
+    /* ===== About Section ===== */
     .abt { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; background: #111; padding: 30px; border-radius: 12px; margin: 30px 0; }
     .prof img { width: 250px; height: 250px; border-radius: 10px; border: 3px solid #00aaff; }
     .who { font-size: 18px; max-width: 600px; color: #ddd; }
 
+    /* ===== Skills Section ===== */
     .filter-buttons { margin-bottom: 20px; text-align: center; }
     .filter-buttons button { margin: 5px; padding: 10px 20px; border: none; background: #444; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
     .filter-buttons button.active, .filter-buttons button:hover { background: #007bff; }
@@ -46,6 +53,7 @@
     .skill img { max-width: 60%; max-height: 60%; }
     .skill:hover { transform: scale(1.1); background: #f5f5f5; }
 
+    /* ===== Services Section ===== */
     #services { padding: 30px 20px; background: #111; margin: 30px 0; }
     #services h4 { text-align: center; color: #00aaff; margin-bottom: 20px; }
     .services-container, .projects-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
@@ -56,6 +64,7 @@
     .service-box p, .project p { font-size: 14px; color: #ccc; }
     .project img { border-radius: 8px; margin-bottom: 10px; max-width: 100%; }
 
+    /* ===== Contact Section ===== */
     .contact-container { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; background: #111; padding: 30px; border-radius: 12px; }
     .contact-info { flex: 1 1 250px; font-size: 16px; color: #ccc; }
     .contact-form { flex: 1 1 300px; }
@@ -64,11 +73,20 @@
     input[type="submit"] { width: fit-content; padding: 10px 20px; background-color: #00aaff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
     input[type="submit"]:hover { background-color: green; }
 
+    /* ===== Footer ===== */
     footer { text-align: center; padding: 20px; background: #111; margin-top: 40px; color: #aaa; }
     .social-links { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
     .social-links a { color: #00aaff; font-size: 28px; transition: transform 0.3s ease, color 0.3s ease; }
     .social-links a:hover { color: #00ffcc; transform: scale(1.2); }
 
+    /* ===== Footer Resume Section ===== */
+    .footer-resume { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; background: #111; padding: 20px; border-radius: 12px; margin-top: 20px; color: #ccc; }
+    .footer-resume img.qr-code { width: 150px; height: 150px; border: 2px solid #00aaff; border-radius: 10px; }
+    .footer-resume button { background-color: #00aaff; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
+    .footer-resume button:hover { background-color: green; }
+    .footer-resume input.copy-link { padding: 8px; width: 250px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff; }
+
+    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .hamburger { display: block; }
       .nav-links { display: none; flex-direction: column; gap: 10px; background: #111; padding: 15px; border-radius: 10px; margin-top: 10px; }
@@ -79,158 +97,217 @@
       .social-links { gap: 15px; }
       .social-links a { font-size: 24px; }
       .service-box, .project { flex: 0 0 200px; }
+      .footer-resume { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
-
 <body>
-<header>
-  <div class="header-left">
-    <button class="hamburger" id="hamburger">☰</button>
-    <h1 id="home">Hi, I'm Muhammad</h1>
-  </div>
-  <nav class="nav-links" id="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <button class="hamburger" id="hamburger">☰</button>
+      <h1 id="home">Hi, I'm Muhammad</h1>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="files/Resume of Kamal.pdf" download>Download CV</a>
+      <a href="#contact">Hire Me</a>
+    </nav>
+  </header>
 
-<main>
-  <!-- Hero -->
-  <section class="s1">
-    <div class="typing" id="typing"></div>
-    <div class="container">
-      <div class="text">
-        <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
-        Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
-        Proven experience building successful products for clients across several countries.</p>
-        <div class="b1">
-          <a href="#contact"><button>Contact Me</button></a>
-          <a href="#projects"><button>View My Work</button></a>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="s1">
+      <div class="typing" id="typing"></div>
+      <div class="container">
+        <div class="text">
+          <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
+          Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
+          Proven experience building successful products for clients across several countries.</p>
+          <div class="b1">
+            <a href="#contact"><button>Contact Me</button></a>
+            <a href="#projects"><button>View My Work</button></a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="my-images/prof-2.png" alt="profile">
         </div>
       </div>
-      <div class="image">
-        <img src="my-images/prof-2.png" alt="profile">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section>
-    <h3 id="about">About Me</h3>
-    <div class="abt">
-      <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
+    <!-- About Section -->
+    <section>
+      <h3 id="about">About Me</h3>
+      <div class="abt">
+        <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
+        <div>
+          <p class="who-1">Who am I</p>
+          <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="s3">
+      <h4 id="skills">My Skills</h4>
+      <div class="filter-buttons">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="frontend">Frontend</button>
+        <button data-filter="backend">Backend</button>
+      </div>
+      <div class="skills-container">
+        <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
+        <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
+        <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
+        <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
+        <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
+        <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
+        <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
+        <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <h4>My Services</h4>
+      <div class="services-container">
+        <div class="service-box"><h5>Custom Web Design</h5><p>Create unique, responsive designs tailored to your brand.</p></div>
+        <div class="service-box"><h5>Responsive Web Development</h5><p>Websites that look great on desktop, tablet, and mobile.</p></div>
+        <div class="service-box"><h5>E-commerce Solutions</h5><p>Online stores optimized for sales and user experience.</p></div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h4>My Projects</h4>
+      <div class="projects-container">
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="femi.jpg"></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="menus.jpg"></a><p>Menu page for a restaurant</p></div>
+        <div class="project"><h3>Project 4</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar project</p></div>
+        <div class="project"><h3>Project 5</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa project</p></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h5>Contact Me</h5>
+      <div class="contact-container">
+        <div class="contact-info">
+          <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+          <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
+          <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <label for="name">Name</label><input type="text" id="name" name="name" placeholder="Full name">
+            <label for="email">Email</label><input type="email" id="email" name="email" placeholder="Your email">
+            <label for="message">Message</label><textarea id="message" rows="5" placeholder="Message..."></textarea>
+            <input type="submit" value="Send Message">
+          </form>
+          <p id="formStatus"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-resume">
       <div>
-        <p class="who-1">Who am I</p>
-        <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
+        <p>Scan to view my Resume</p>
+        <img class="qr-code" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=files/Resume%20of%20Kamal.pdf&choe=UTF-8" alt="QR Code">
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <a href="files/Resume of Kamal.pdf" download><button>Download CV</button></a>
+        <input class="copy-link" type="text" value="files/Resume of Kamal.pdf" id="cvLink" readonly>
+        <button onclick="copyLink()">Copy CV Link</button>
       </div>
     </div>
-  </section>
 
-  <!-- Skills -->
-  <section class="s3">
-    <h4 id="skills">My Skills</h4>
-    <div class="filter-buttons">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="frontend">Frontend</button>
-      <button data-filter="backend">Backend</button>
+    <div class="social-links">
+      <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-    <div class="skills-container">
-      <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
-      <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
-      <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
-      <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
-      <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
-      <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
-      <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
-      <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
-    </div>
-  </section>
+    <p>&copy; 2025 Kamaldeen Muhammad.. All rights reserved.</p>
+  </footer>
 
-  <!-- Services -->
-  <section id="services">
-    <h4>My Services</h4>
-    <div class="services-container">
-      <div class="service-box"><h5>Custom Web Design</h5><p>Create unique, responsive designs tailored to your brand.</p></div>
-      <div class="service-box"><h5>Responsive Web Development</h5><p>Websites that look great on desktop, tablet, and mobile.</p></div>
-      <div class="service-box"><h5>E-commerce Solutions</h5><p>Online stores optimized for sales and user experience.</p></div>
-    </div>
-  </section>
+  <!-- JS -->
+  <script>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      // Toggle hamburger icon between ☰ and ✕
+      if(navLinks.classList.contains('show')){
+        hamburger.textContent = '✕';
+      } else {
+        hamburger.textContent = '☰';
+      }
+    });
 
-  <!-- Projects -->
-  <section id="projects">
-    <h4>My Projects</h4>
-    <div class="projects-container">
-      <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
-      <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="my-images/femi.jpg"></a><p>Fashion house website</p></div>
-      <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="my-images/menus.jpg"></a><p>Menu page for a restaurant</p></div>
-      <div class="project"><h3>Selar Project</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar online store platform</p></div>
-      <div class="project"><h3>Ovampa Project</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa platform project</p></div>
-    </div>
-  </section>
+    // Copy CV Link function
+    function copyLink() {
+      const cvLinkInput = document.getElementById('cvLink');
+      cvLinkInput.select();
+      cvLinkInput.setSelectionRange(0, 99999); // For mobile devices
+      navigator.clipboard.writeText(cvLinkInput.value).then(() => {
+        alert('CV link copied to clipboard!');
+      });
+    }
 
-  <!-- Contact -->
-  <section id="contact">
-    <h5>Contact Me</h5>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
-        <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
-        <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
-      </div>
-      <div class="contact-form">
-        <form id="contactForm">
-          <label for="name">Name</label><input type="text" id="name" name="name" placeholder="Full name">
-          <label for="email">Email</label><input type="email" id="email" name="email" placeholder="Your email">
-          <label for="message">Message</label><textarea id="message" rows="5" placeholder="Message..."></textarea>
-          <input type="submit" value="Send Message">
-        </form>
-        <p id="formStatus"></p>
-      </div>
-    </div>
-  </section>
-</main>
+    // Optional: Typing effect for hero section
+    const typedText = "I craft solid and scalable web & app solutions.";
+    const typingElement = document.getElementById('typing');
+    let i = 0;
 
-<footer>
-  <div class="social-links">
-    <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
-  </div>
-  <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-</footer>
+    function typeWriter() {
+      if (i < typedText.length) {
+        typingElement.innerHTML += typedText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 100);
+      }
+    }
+    window.onload = typeWriter;
 
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+    // Skills filter functionality
+    const filterBtns = document.querySelectorAll('.filter-buttons button');
+    const skills = document.querySelectorAll('.skill');
 
-  const typingElement = document.getElementById('typing');
-  const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
-  let wordIndex = 0, charIndex = 0;
-  function type(){if(charIndex<words[wordIndex].length){typingElement.textContent+=words[wordIndex][charIndex++];setTimeout(type,100);}else setTimeout(erase,1500);}
-  function erase(){if(charIndex>0){typingElement.textContent=words[wordIndex].substring(0,--charIndex);setTimeout(erase,50);}else{wordIndex=(wordIndex+1)%words.length;setTimeout(type,500);}}
-  type();
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // remove active class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-  const filterButtons = document.querySelectorAll('.filter-buttons button');
-  const skills = document.querySelectorAll('.skill');
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector('.filter-buttons .active').classList.remove('active');
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      skills.forEach(skill => {
-        if(filter==='all'||skill.classList.contains(filter)) skill.style.display='flex';
-        else skill.style.display='none';
+        const filter = btn.getAttribute('data-filter');
+        skills.forEach(skill => {
+          if(filter === 'all' || skill.classList.contains(filter)) {
+            skill.style.display = 'flex';
+          } else {
+            skill.style.display = 'none';
+          }
+        });
       });
     });
-  });
-</script>
+
+    // Optional: Simple contact form submit feedback
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      formStatus.textContent = "Thank you! Your message has been sent.";
+      contactForm.reset();
+      setTimeout(() => { formStatus.textContent = ''; }, 5000);
+    });
+  </script>
 </body>
-        </html>
+</html>
