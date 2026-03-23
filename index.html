@@ -92,166 +92,162 @@
     }
   </style>
 </head>
+
 <body>
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <button class="hamburger" id="hamburger">☰</button>
+      <h1 id="home">Hi, I'm Muhammad</h1>
+    </div>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<!-- Header -->
-<header>
-  <div class="header-left">
-    <button class="hamburger" id="hamburger">☰</button>
-    <h1 id="home">Hi, I'm Muhammad</h1>
-  </div>
-  <nav class="nav-links" id="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<main>
-  <!-- Hero Section -->
-  <section class="s1">
-    <div class="typing" id="typing"></div>
-    <div class="container">
-      <div class="text">
-        <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
-        Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
-        Proven experience building successful products for clients across several countries.</p>
-        <div class="b1">
-          <a href="#contact"><button>Contact Me</button></a>
-          <a href="#projects"><button>View My Work</button></a>
+  <main>
+    <!-- Hero Section -->
+    <section class="s1">
+      <div class="typing" id="typing"></div>
+      <div class="container">
+        <div class="text">
+          <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
+          Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
+          Proven experience building successful products for clients across several countries.</p>
+          <div class="b1">
+            <a href="#contact"><button>Contact Me</button></a>
+            <a href="#projects"><button>View My Work</button></a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="my-images/prof-2.png" alt="profile">
         </div>
       </div>
-      <div class="image">
-        <img src="my-images/prof-2.png" alt="profile">
+    </section>
+
+    <!-- About Section -->
+    <section>
+      <h3 id="about">About Me</h3>
+      <div class="abt">
+        <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
+        <div>
+          <p class="who-1">Who am I</p>
+          <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
+        </div>
       </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="s3">
+      <h4 id="skills">My Skills</h4>
+      <div class="filter-buttons">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="frontend">Frontend</button>
+        <button data-filter="backend">Backend</button>
+      </div>
+      <div class="skills-container">
+        <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
+        <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
+        <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
+        <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
+        <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
+        <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
+        <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
+        <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <h4>My Services</h4>
+      <div class="services-container">
+        <div class="service-box"><h5>Custom Web Design</h5><p>Create unique, responsive designs tailored to your brand.</p></div>
+        <div class="service-box"><h5>Responsive Web Development</h5><p>Websites that look great on desktop, tablet, and mobile.</p></div>
+        <div class="service-box"><h5>E-commerce Solutions</h5><p>Online stores optimized for sales and user experience.</p></div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h4>My Projects</h4>
+      <div class="projects-container">
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="femi.jpg"></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="menus.jpg"></a><p>Menu page for a restaurant</p></div>
+
+        <!-- New Projects Added -->
+        <div class="project"><h3>Selar Project</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar online store platform</p></div>
+        <div class="project"><h3>Ovampa Project</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa platform project</p></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h5>Contact Me</h5>
+      <div class="contact-container">
+        <div class="contact-info">
+          <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+          <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
+          <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <label for="name">Name</label><input type="text" id="name" name="name" placeholder="Full name">
+            <label for="email">Email</label><input type="email" id="email" name="email" placeholder="Your email">
+            <label for="message">Message</label><textarea id="message" rows="5" placeholder="Message..."></textarea>
+            <input type="submit" value="Send Message">
+          </form>
+          <p id="formStatus"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-  </section>
+    <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
+  </footer>
 
-  <!-- About Section -->
-  <section>
-    <h3 id="about">About Me</h3>
-    <div class="abt">
-      <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
-      <div>
-        <p class="who-1">Who am I</p>
-        <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
-      </div>
-    </div>
-  </section>
+  <!-- Internal JS -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-  <!-- Skills Section -->
-  <section class="s3">
-    <h4 id="skills">My Skills</h4>
-    <div class="filter-buttons">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="frontend">Frontend</button>
-      <button data-filter="backend">Backend</button>
-    </div>
-    <div class="skills-container">
-      <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
-      <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
-      <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
-      <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
-      <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
-      <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
-      <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
-      <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
-    </div>
-  </section>
+    // Typing Effect
+    const typingElement = document.getElementById('typing');
+    const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
+    let wordIndex = 0, charIndex = 0;
+    function type(){if(charIndex<words[wordIndex].length){typingElement.textContent+=words[wordIndex][charIndex++];setTimeout(type,100);}else setTimeout(erase,1500);}
+    function erase(){if(charIndex>0){typingElement.textContent=words[wordIndex].substring(0,--charIndex);setTimeout(erase,50);}else{wordIndex=(wordIndex+1)%words.length;setTimeout(type,500);}}
+    type();
 
-  <!-- Services Section -->
-  <section id="services">
-    <h4>My Services</h4>
-    <div class="services-container">
-      <div class="service-box">
-        <h5>Web Development</h5>
-        <p>Responsive websites, frontend & backend solutions.</p>
-      </div>
-      <div class="service-box">
-        <h5>UI/UX Design</h5>
-        <p>Clean, user-friendly interface design & experience.</p>
-      </div>
-      <div class="service-box">
-        <h5>App Development</h5>
-        <p>Mobile and desktop applications with modern tech stack.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section>
-    <h4 id="projects">My Projects</h4>
-    <div class="projects-container">
-      <div class="project">
-        <img src="my-images/selar.jpg" alt="Selar Project">
-        <h3>Digital Product Platform</h3>
-        <p>A platform for selling digital products and managing online transactions.</p>
-      </div>
-      <div class="project">
-        <img src="my-images/ovampa.jpg" alt="Ovampa Project">
-        <h3>Business Website</h3>
-        <p>A modern responsive business website with clean UI and optimized performance.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <h4>Contact Me</h4>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p>Email: example@email.com</p>
-        <p>Phone: +234 123 456 7890</p>
-      </div>
-      <div class="contact-form">
-        <form>
-          <input type="text" placeholder="Name">
-          <input type="email" placeholder="Email">
-          <textarea placeholder="Message"></textarea>
-          <input type="submit" value="Send Message">
-        </form>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Footer -->
-<footer>
-  <p>&copy; 2026 Kamaldeen Muhammad. All rights reserved.</p>
-  <div class="social-links">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-    <a href="#"><i class="fab fa-github"></i></a>
-  </div>
-</footer>
-
-<!-- Typing Effect JS -->
-<script>
-  const words = ["Frontend Developer", "Backend Developer", "Fullstack Engineer"];
-  let i = 0;
-  let j = 0;
-  let currentWord = "";
-  let isDeleting = false;
-  const typingEl = document.getElementById("typing");
-
-  function type() {
-    if (i >= words.length) i = 0;
-    currentWord = words[i];
-    if (isDeleting) {
-      typingEl.textContent = currentWord.substring(0, j--);
-      if (j < 0) { isDeleting = false; i++; }
-    } else {
-      typingEl.textContent = currentWord.substring(0, j++);
-      if (j > currentWord.length) { isDeleting = true; j = currentWord.length; }
-    }
-    setTimeout(type, isDeleting ? 100 : 200);
-  }
-  type();
-</script>
-
+    // Skills Filter
+    const filterButtons = document.querySelectorAll('.filter-buttons button');
+    const skills = document.querySelectorAll('.skill');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector('.filter-buttons .active').classList.remove('active');
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        skills.forEach(skill => {
+          if(filter==='all'||skill.classList.contains(filter)) skill.style.display='flex';
+          else skill.style.display='none';
+        });
+      });
+    });
+  </script>
 </body>
-</html>
+  </html>
