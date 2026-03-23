@@ -11,7 +11,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <!-- Internal CSS -->
   <style>
     /* ===== Global Reset ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,6 +25,7 @@
 
     /* Hamburger Menu */
     .hamburger { display: none; font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
+    .hamburger.active { color: #00ffcc; }
 
     /* ===== Typing Effect ===== */
     .typing { border-right: 2px solid #00ffcc; white-space: nowrap; overflow: hidden; width: fit-content; animation: blinkCursor 0.8s step-end infinite; font-size: 30px; color: lightblue; margin: 20px 0; }
@@ -72,20 +72,24 @@
     input[type="submit"] { width: fit-content; padding: 10px 20px; background-color: #00aaff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
     input[type="submit"]:hover { background-color: green; }
 
+    /* ===== CV Section ===== */
+    .cv-section { display: flex; align-items: center; gap: 20px; background: #111; padding: 20px; border-radius: 10px; margin-top: 30px; justify-content: center; flex-wrap: wrap; }
+    .cv-section img { width: 120px; height: 120px; border: 3px solid #00aaff; border-radius: 12px; }
+    .cv-buttons { display: flex; flex-direction: column; gap: 10px; }
+    .cv-buttons a { padding: 10px 20px; background-color: #00aaff; color: white; text-decoration: none; border-radius: 5px; text-align: center; transition: background 0.3s ease; }
+    .cv-buttons a:hover { background-color: green; }
+
     /* ===== Footer ===== */
     footer { text-align: center; padding: 20px; background: #111; margin-top: 40px; color: #aaa; }
-    .footer-qr { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-    .footer-qr img { width: 120px; height: 120px; border: 3px solid #00aaff; border-radius: 10px; }
-    .footer-qr button { padding: 8px 15px; border: none; border-radius: 5px; background: #00aaff; color: white; cursor: pointer; transition: background 0.3s ease; }
-    .footer-qr button:hover { background: green; }
     .social-links { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; }
     .social-links a { color: #00aaff; font-size: 28px; transition: transform 0.3s ease, color 0.3s ease; }
     .social-links a:hover { color: #00ffcc; transform: scale(1.2); }
 
     /* ===== Responsive ===== */
     @media (max-width: 768px) {
-      .hamburger { display: block; }
-      .nav-links { display: none; flex-direction: column; gap: 10px; background: #111; padding: 15px; border-radius: 10px; margin-top: 10px; position: absolute; right: 20px; top: 60px; z-index: 1000; }
+      .hamburger { display: block; order: 2; }
+      header h1 { order: 1; }
+      .nav-links { display: none; flex-direction: column; gap: 10px; background: #111; padding: 15px; border-radius: 10px; margin-top: 10px; width: 100%; }
       .nav-links.show { display: flex; }
       .container, .abt { flex-direction: column; text-align: center; }
       .contact-container { flex-direction: column; }
@@ -93,10 +97,12 @@
       .social-links { gap: 15px; }
       .social-links a { font-size: 24px; }
       .service-box, .project { flex: 0 0 200px; }
+      .cv-section { flex-direction: column; }
+      .cv-buttons { flex-direction: column; width: 100%; }
+      .cv-buttons a { width: 100%; }
     }
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header>
@@ -182,8 +188,18 @@
         <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
         <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="my-images/femi.jpg"></a><p>Fashion house website</p></div>
         <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="my-images/menus.jpg"></a><p>Menu page for a restaurant</p></div>
-        <div class="project"><h3>Project 4</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar e-commerce platform</p></div>
-        <div class="project"><h3>Project 5</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa website</p></div>
+        <div class="project"><h3>Selar</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar Project</p></div>
+        <div class="project"><h3>Ovampa</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa Project</p></div>
+      </div>
+    </section>
+
+    <!-- CV Section -->
+    <section class="cv-section">
+      <img src="my-images/kamaldeen.png" alt="QR Code">
+      <div class="cv-buttons">
+        <a href="resume of kamal.pdf" download>Download CV</a>
+        <a href="resume of kamal.pdf" target="_blank">Open CV</a>
+        <a href="#" onclick="copyCV()">Copy CV Link</a>
       </div>
     </section>
 
@@ -211,12 +227,6 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-qr">
-      <img src="my-images/kamaldeen.png" alt="Resume QR Code">
-      <button onclick="window.location.href='resume of kamal.pdf'" >Download CV</button>
-      <button onclick="copyCVLink()">Copy CV Link</button>
-      <input type="text" id="cvLink" value="resume of kamal.pdf" style="position:absolute; left:-9999px;">
-    </div>
     <div class="social-links">
       <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -225,30 +235,29 @@
     </div>
     <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
   </footer>
-
   <!-- Internal JS -->
   <script>
+    // ===== Hamburger Toggle =====
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
 
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('show');
-      hamburger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+      // Toggle hamburger icon between ☰ and ✕
+      if (hamburger.classList.contains('active')) {
+        hamburger.innerHTML = '☰';
+        hamburger.classList.remove('active');
+      } else {
+        hamburger.innerHTML = '✕';
+        hamburger.classList.add('active');
+      }
     });
 
-    // Copy CV Link
-    function copyCVLink() {
-      const cvLinkInput = document.getElementById('cvLink');
-      cvLinkInput.select();
-      cvLinkInput.setSelectionRange(0, 99999);
-      navigator.clipboard.writeText(cvLinkInput.value).then(() => {
-        alert('CV link copied to clipboard!');
-      });
-    }
-
-    // Typing effect
+    // ===== Typing Effect =====
     const typingElement = document.getElementById('typing');
-    const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."let wordIndex = 0, charIndex = 0;
+    const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
+    let wordIndex = 0, charIndex = 0;
+
     function type() {
       if (charIndex < words[wordIndex].length) {
         typingElement.textContent += words[wordIndex][charIndex++];
@@ -267,9 +276,10 @@
         setTimeout(type, 500);
       }
     }
+
     type();
 
-    // Skills Filter
+    // ===== Skills Filter =====
     const filterButtons = document.querySelectorAll('.filter-buttons button');
     const skills = document.querySelectorAll('.skill');
 
@@ -280,14 +290,19 @@
         btn.classList.add('active');
         const filter = btn.getAttribute('data-filter');
         skills.forEach(skill => {
-          if (filter === 'all' || skill.classList.contains(filter)) {
-            skill.style.display = 'flex';
-          } else {
-            skill.style.display = 'none';
-          }
+          if (filter === 'all' || skill.classList.contains(filter)) skill.style.display = 'flex';
+          else skill.style.display = 'none';
         });
       });
     });
-  </script>
-</body>
-  </html>
+
+    // ===== Copy CV Link =====
+    function copyCV() {
+      const cvLink = window.location.origin + "/resume of kamal.pdf";
+      navigator.clipboard.writeText(cvLink).then(() => {
+        alert('CV link copied to clipboard!');
+      }).catch(err => {
+        alert('Failed to copy CV link: ' + err);
+      });
+    }
+    </script>
