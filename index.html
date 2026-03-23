@@ -238,77 +238,79 @@
     <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
   </footer>
 
-  <!-- JS -->
+<!-- Internal JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
   // ===== Hamburger Toggle =====
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-  hamburger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
-});
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    hamburger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+  });
 
-// ===== Typing Effect =====
-const typingElement = document.getElementById('typing');
-const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
-let wordIndex = 0, charIndex = 0;
+  // ===== Typing Effect =====
+  const typingElement = document.getElementById('typing');
+  const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
+  let wordIndex = 0, charIndex = 0;
 
-function type() {
-  if (charIndex < words[wordIndex].length) {
-    typingElement.textContent += words[wordIndex][charIndex++];
-    setTimeout(type, 100);
-  } else {
-    setTimeout(erase, 1500);
+  function type() {
+    if (charIndex < words[wordIndex].length) {
+      typingElement.textContent += words[wordIndex][charIndex++];
+      setTimeout(type, 100);
+    } else {
+      setTimeout(erase, 1500);
+    }
   }
-}
 
-function erase() {
-  if (charIndex > 0) {
-    typingElement.textContent = words[wordIndex].substring(0, --charIndex);
-    setTimeout(erase, 50);
-  } else {
-    wordIndex = (wordIndex + 1) % words.length;
-    setTimeout(type, 500);
+  function erase() {
+    if (charIndex > 0) {
+      typingElement.textContent = words[wordIndex].substring(0, --charIndex);
+      setTimeout(erase, 50);
+    } else {
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(type, 500);
+    }
   }
-}
 
-type();
+  type();
 
-// ===== Skills Filter =====
-const filterButtons = document.querySelectorAll('.filter-buttons button');
-const skills = document.querySelectorAll('.skill');
+  // ===== Skills Filter =====
+  const filterButtons = document.querySelectorAll('.filter-buttons button');
+  const skills = document.querySelectorAll('.skill');
 
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.preventDefault();
-    document.querySelector('.filter-buttons .active').classList.remove('active');
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-    skills.forEach(skill => {
-      if (filter === 'all' || skill.classList.contains(filter)) skill.style.display = 'flex';
-      else skill.style.display = 'none';
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector('.filter-buttons .active').classList.remove('active');
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      skills.forEach(skill => {
+        if (filter === 'all' || skill.classList.contains(filter)) skill.style.display = 'flex';
+        else skill.style.display = 'none';
+      });
     });
   });
-});
 
-// ===== QR Code Generation =====
-new QRCode(document.getElementById("qrcode"), {
-  text: "https://yourwebsite.com/resume%20of%20kamal.pdf",
-  width: 120,
-  height: 120,
-  colorDark: "#00aaff",
-  colorLight: "#000000",
-  correctLevel: QRCode.CorrectLevel.H
-});
-
-// ===== Copy CV Link =====
-function copyCV() {
-  const cvURL = "https://yourwebsite.com/resume%20of%20kamal.pdf";
-  navigator.clipboard.writeText(cvURL).then(() => {
-    alert("CV link copied to clipboard!");
-  }).catch(err => {
-    console.error("Could not copy text: ", err);
+  // ===== QR Code Generation =====
+  new QRCode(document.getElementById("qrcode"), {
+    text: "resume of kamal.pdf",
+    width: 120,
+    height: 120,
+    colorDark: "#00aaff",
+    colorLight: "#000000",
+    correctLevel: QRCode.CorrectLevel.H
   });
-}()
+
+  // ===== Copy CV Link =====
+  function copyCV() {
+    const cvURL = "resume of kamal.pdf";
+    navigator.clipboard.writeText(cvURL).then(() => {
+      alert("CV link copied to clipboard!");
+    }).catch(err => {
+      console.error("Could not copy text: ", err);
+    });
+  }
+</script>
 </body>
 </html>
-  
