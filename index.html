@@ -10,10 +10,10 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- QRCode.js library -->
+  <!-- QRCode.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+  <!-- Internal CSS -->
   <style>
     /* ===== Global Reset ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,23 +22,22 @@
     /* ===== Header & Navigation ===== */
     header { display: flex; justify-content: space-between; align-items: center; background: #111; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
     header h1 { font-size: 22px; color: #00aaff; }
-    .nav-links { display: flex; gap: 20px; }
+    .nav-links { display: flex; gap: 20px; transition: transform 0.5s ease; }
     .nav-links a { text-decoration: none; font-size: 18px; color: lightblue; transition: color 0.3s ease; }
     .nav-links a:hover { color: #fff; }
 
-    /* ===== Hamburger Menu ===== */
-    .hamburger { font-size: 28px; background: none; border: none; color: white; cursor: pointer; z-index: 1100; }
-    .nav-links { 
-      position: fixed; top: 0; right: -300px; height: 100%; width: 250px; 
-      flex-direction: column; background: #111; padding: 50px 20px; 
-      gap: 20px; transition: right 0.3s ease-in-out;
-    }
+    /* Hamburger Menu */
+    .hamburger { font-size: 28px; background: none; border: none; color: white; cursor: pointer; }
+
+    /* Slide menu animation */
+    .nav-links { position: fixed; right: -250px; top: 0; height: 100vh; flex-direction: column; gap: 20px; background: #111; padding: 80px 20px; width: 250px; transform: translateX(0); z-index: 2000; }
     .nav-links.show { right: 0; }
 
-    /* ===== Hero Section ===== */
+    /* ===== Typing Effect ===== */
     .typing { border-right: 2px solid #00ffcc; white-space: nowrap; overflow: hidden; width: fit-content; animation: blinkCursor 0.8s step-end infinite; font-size: 30px; color: lightblue; margin: 20px 0; }
     @keyframes blinkCursor { 50% { border-color: transparent; } }
 
+    /* ===== Hero Section ===== */
     .container { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 40px 20px; gap: 20px; }
     .text { flex: 1 1 300px; font-size: 20px; color: #fff; }
     .text button { margin-top: 15px; padding: 10px 20px; border: none; background: #00aaff; color: white; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
@@ -63,16 +62,28 @@
     #services { padding: 30px 20px; background: #111; margin: 30px 0; }
     #services h4 { text-align: center; color: #00aaff; margin-bottom: 20px; }
     .services-container, .projects-container { display: flex; gap: 15px; overflow-x: auto; scroll-behavior: smooth; padding-bottom: 10px; }
+    .services-container::-webkit-scrollbar, .projects-container::-webkit-scrollbar { height: 8px; }
+    .services-container::-webkit-scrollbar-thumb, .projects-container::-webkit-scrollbar-thumb { background-color: #00aaff; border-radius: 10px; }
     .service-box, .project { flex: 0 0 250px; background: #222; color: white; padding: 20px; border-radius: 10px; min-height: 150px; display: flex; flex-direction: column; justify-content: center; text-align: center; box-shadow: 0 0 10px #000; transition: transform 0.3s ease; }
     .service-box h5, .project h3 { margin-bottom: 10px; color: #00aaff; }
     .service-box p, .project p { font-size: 14px; color: #ccc; }
     .project img { border-radius: 8px; margin-bottom: 10px; max-width: 100%; }
 
+    /* ===== Contact Section ===== */
+    .contact-container { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; background: #111; padding: 30px; border-radius: 12px; }
+    .contact-info { flex: 1 1 250px; font-size: 16px; color: #ccc; }
+    .contact-form { flex: 1 1 300px; }
+    form { display: flex; flex-direction: column; gap: 10px; }
+    input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; border: 1px solid #444; border-radius: 5px; background: #222; color: white; }
+    input[type="submit"] { width: fit-content; padding: 10px 20px; background-color: #00aaff; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; }
+    input[type="submit"]:hover { background-color: green; }
+
     /* ===== CV Section ===== */
-    .cv-section { display: flex; gap: 30px; align-items: center; justify-content: center; background: #111; padding: 30px; border-radius: 12px; margin-top: 40px; flex-wrap: wrap; }
-    .cv-section div { text-align: center; }
-    .cv-section button { display: block; margin: 10px auto; padding: 10px 20px; border: none; border-radius: 5px; background: #00aaff; color: #fff; cursor: pointer; transition: background 0.3s ease; }
-    .cv-section button:hover { background: green; }
+    .cv-section { display: flex; gap: 20px; flex-wrap: wrap; background: #111; padding: 20px; border-radius: 12px; margin-top: 30px; justify-content: center; }
+    .cv-box { display: flex; flex-direction: column; align-items: center; text-align: center; background: #222; padding: 20px; border-radius: 12px; min-width: 200px; }
+    .cv-box img { width: 150px; height: 150px; margin-bottom: 15px; }
+    .cv-box button { margin: 5px 0; padding: 8px 15px; border: none; border-radius: 5px; background: #00aaff; color: white; cursor: pointer; transition: background 0.3s ease; }
+    .cv-box button:hover { background: green; }
 
     /* ===== Footer ===== */
     footer { text-align: center; padding: 20px; background: #111; margin-top: 40px; color: #aaa; }
@@ -81,56 +92,149 @@
     .social-links a:hover { color: #00ffcc; transform: scale(1.2); }
 
     /* ===== Responsive ===== */
-    @media (max-width:768px){
-      .container,.abt { flex-direction: column; text-align:center; }
-      .contact-container { flex-direction: column; }
-      .image img,.prof img { width: 200px;height: 200px; }
-      .service-box,.project { flex:0 0 200px; }
-      .cv-section { flex-direction: column; }
-      .nav-links { width: 200px; padding: 60px 15px; }
+    @media (max-width: 768px) {
+      .container, .abt, .cv-section { flex-direction: column; text-align: center; }
+      .image img, .prof img, .cv-box img { width: 200px; height: 200px; }
+      .cv-section { gap: 15px; }
+      .nav-links { width: 80%; padding-top: 100px; }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <h1 id="home">Hi, I'm Muhammad</h1>
+    <button class="hamburger" id="hamburger">☰</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#downloadCV">Download CV</a>
+      <a href="#contact">Hire Me</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Hi, I'm Muhammad</h1>
-  <button class="hamburger" id="hamburger">☰</button>
-  <nav class="nav-links" id="nav-links">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#services">Services</a>
-    <a href="#projects">Projects</a>
-    <a href="resume of kamal.pdf" download>Download CV</a>
-    <a href="#contact">Hire Me</a>
-  </nav>
-</header>
+  <main>
+    <!-- Hero Section -->
+    <section class="s1">
+      <div class="typing" id="typing"></div>
+      <div class="container">
+        <div class="text">
+          <p>I like to craft solid and scalable frontend and backend products with great UX.<br><br>
+          Highly skilled at progressive enhancement, design systems & UI Engineering.<br><br>
+          Proven experience building successful products for clients across several countries.</p>
+          <div class="b1">
+            <a href="#contact"><button>Contact Me</button></a>
+            <a href="#projects"><button>View My Work</button></a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="my-images/prof-2.png" alt="profile">
+        </div>
+      </div>
+    </section>
 
-<main>
-  <!-- Hero, About, Skills, Services, Projects sections remain same as your original code -->
+    <!-- About Section -->
+    <section>
+      <h3 id="about">About Me</h3>
+      <div class="abt">
+        <div class="prof"><img src="my-images/prof-2.png" alt="profile"></div>
+        <div>
+          <p class="who-1">Who am I</p>
+          <p class="who">I'm a passionate web developer with 3+ years of experience...</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- CV Section -->
-  <section class="cv-section">
-    <div>
-      <h4>Download My CV</h4>
-      <button onclick="window.open('resume of kamal.pdf', '_blank')">Download CV</button>
-      <button onclick="copyCV()">Copy CV Link</button>
+    <!-- Skills Section -->
+    <section class="s3">
+      <h4 id="skills">My Skills</h4>
+      <div class="filter-buttons">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="frontend">Frontend</button>
+        <button data-filter="backend">Backend</button>
+      </div>
+      <div class="skills-container">
+        <div class="skill frontend"><img src="my-images/html.png" alt="HTML"></div>
+        <div class="skill frontend"><img src="my-images/css.png" alt="CSS"></div>
+        <div class="skill frontend"><img src="my-images/javascript.png" alt="JavaScript"></div>
+        <div class="skill frontend"><img src="my-images/react.png" alt="React"></div>
+        <div class="skill backend"><img src="my-images/node.jpeg" alt="Node.js"></div>
+        <div class="skill backend"><img src="my-images/express.png" alt="Express"></div>
+        <div class="skill backend"><img src="my-images/mongo.png" alt="MongoDB"></div>
+        <div class="skill backend"><img src="my-images/python.png" alt="Python"></div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <h4>My Services</h4>
+      <div class="services-container">
+        <div class="service-box"><h5>Custom Web Design</h5><p>Create unique, responsive designs tailored to your brand.</p></div>
+        <div class="service-box"><h5>Responsive Web Development</h5><p>Websites that look great on desktop, tablet, and mobile.</p></div>
+        <div class="service-box"><h5>E-commerce Solutions</h5><p>Online stores optimized for sales and user experience.</p></div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h4>My Projects</h4>
+      <div class="projects-container">
+        <div class="project"><h3>Project 1</h3><a href="rest.html"><img src="my-images/web1.jpg"></a><p>Website for a restaurant</p></div>
+        <div class="project"><h3>Project 2</h3><a href="https://femicoiture.vercel.app/"><img src="femi.jpg"></a><p>Fashion house website</p></div>
+        <div class="project"><h3>Project 3</h3><a href="menu.html"><img src="menus.jpg"></a><p>Menu page for a restaurant</p></div>
+        <div class="project"><h3>Selar</h3><a href="https://selar.com/27e716"><img src="my-images/selar.jpg"></a><p>Selar platform project</p></div>
+        <div class="project"><h3>Ovampa</h3><a href="https://ovampa.com/new"><img src="my-images/ovampa.jpg"></a><p>Ovampa platform project</p></div>
+      </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="downloadCV">
+      <h4>My CV</h4>
+      <div class="cv-section">
+        <div class="cv-box">
+          <div id="qrcode"></div>
+          <a href="resume of kamal.pdf" download><button>Download CV</button></a>
+          <button onclick="copyCV()">Copy CV Link</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h5>Contact Me</h5>
+      <div class="contact-container">
+        <div class="contact-info">
+          <p>Email <br><a href="mailto:opemuhammed35@gmail.com">opemuhammed35@gmail.com</a></p>
+          <p>Phone <br><a href="tel:+2348140295116">+2348140295116</a></p>
+          <p>Address <br>NSUK campus, Keffi, Nassarawa state, Nigeria.</p>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <label for="name">Name</label><input type="text" id="name" name="name" placeholder="Full name">
+            <label for="email">Email</label><input type="email" id="email" name="email" placeholder="Your email">
+            <label for="message">Message</label><textarea id="message" rows="5" placeholder="Message..."></textarea>
+            <input type="submit" value="Send Message">
+          </form>
+          <p id="formStatus"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-    <div id="qrcode"></div>
-  </section>
+    <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
+  </footer>
 
-</main>
-
-<footer>
-  <div class="social-links">
-    <a href="https://wa.me/2348140295116" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/profile.php?id=61583195955596" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="mailto:opemuhammed35@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.instagram.com/kamaldeenmuhammad11" target="_blank"><i class="fab fa-instagram"></i></a>
-  </div>
-  <p>&copy; 2025 Kamaldeen Muhammad. All rights reserved.</p>
-</footer>
 <script>
   // ===== Hamburger Menu =====
   const hamburger = document.getElementById('hamburger');
@@ -138,12 +242,7 @@
 
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('show');
-    // toggle hamburger to X
-    if(navLinks.classList.contains('show')){
-      hamburger.textContent = '✖';
-    } else {
-      hamburger.textContent = '☰';
-    }
+    hamburger.textContent = navLinks.classList.contains('show') ? '✖' : '☰';
   });
 
   // ===== Typing Effect =====
@@ -151,8 +250,8 @@
   const words = ["I'm a Software Engineer.", "I build Web Apps.", "I create Scalable Solutions."];
   let wordIndex = 0, charIndex = 0;
 
-  function type(){
-    if(charIndex < words[wordIndex].length){
+  function type() {
+    if (charIndex < words[wordIndex].length) {
       typingElement.textContent += words[wordIndex][charIndex++];
       setTimeout(type, 100);
     } else {
@@ -160,8 +259,8 @@
     }
   }
 
-  function erase(){
-    if(charIndex > 0){
+  function erase() {
+    if (charIndex > 0) {
       typingElement.textContent = words[wordIndex].substring(0, --charIndex);
       setTimeout(erase, 50);
     } else {
@@ -169,13 +268,11 @@
       setTimeout(type, 500);
     }
   }
-
   type();
 
   // ===== Skills Filter =====
   const filterButtons = document.querySelectorAll('.filter-buttons button');
   const skills = document.querySelectorAll('.skill');
-
   filterButtons.forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
@@ -183,30 +280,31 @@
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
       skills.forEach(skill => {
-        if(filter==='all' || skill.classList.contains(filter)){
-          skill.style.display='flex';
-        } else {
-          skill.style.display='none';
-        }
+        if (filter === 'all' || skill.classList.contains(filter)) skill.style.display = 'flex';
+        else skill.style.display = 'none';
       });
     });
   });
 
-  // ===== QR Code =====
-  new QRCode(document.getElementById("qrcode"), {
+  // ===== QR Code Generation =====
+  const qrcode = new QRCode(document.getElementById("qrcode"), {
     text: window.location.origin + "/resume of kamal.pdf",
     width: 150,
     height: 150,
-    colorDark : "#00aaff",
-    colorLight : "#000000",
-    correctLevel : QRCode.CorrectLevel.H
+    colorDark: "#00aaff",
+    colorLight: "#222",
+    correctLevel: QRCode.CorrectLevel.H
   });
 
   // ===== Copy CV Link =====
   function copyCV() {
     const cvLink = window.location.origin + "/resume of kamal.pdf";
-    navigator.clipboard.writeText(cvLink)
-      .then(() => alert("CV link copied to clipboard!"))
-      .catch(err => console.error("Failed to copy:", err));
+    navigator.clipboard.writeText(cvLink).then(() => {
+      alert("CV link copied to clipboard!");
+    }).catch(() => {
+      alert("Failed to copy link.");
+    });
   }
-       </script>
+</script>
+  
+  
